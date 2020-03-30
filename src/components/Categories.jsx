@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import arrowLeft from "./images/arrow-left-solid.svg";
-import hamburger from "./images/bars-solid.svg";
 import NavBar from "./NavBar";
 import TopNav from "./TopNav";
 
 class Categories extends Component {
   render() {
     return (
-      <div className="categories-page">
+      <div className="categories-page page">
         <TopNav />
         <h2 className="page-tile">Explore!</h2>
         <div className="categories men-cate">

@@ -1,7 +1,8 @@
 html,
 body {
-  height: 100%;
+  margin: 0px;
 }
+
 .App {
   text-align: center;
 }
@@ -12,6 +13,27 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;
+}
+
+p {
+  font-family: Maven Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0px;
+}
+
+.red {
+  color: #c53a1e;
+}
+
+.yellow {
+  color: #e6b11b;
+}
+
+.green {
+  color: #84ae9f;
 }
 
 .page-tile {
@@ -30,4 +52,8 @@ h2 {
   width: 100%;
   margin-bottom: 40px;
   margin-top: 32px;
+}
+
+.page {
+  padding-bottom: 56px;
 }
