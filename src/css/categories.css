@@ -1,0 +1,38 @@
+.categories-page {
+  position: relative;
+}
+
+.categories {
+  margin: auto 32px;
+  text-align: center;
+  color: white;
+  height: 240px;
+  background-size: cover;
+  box-shadow: 0px 4px 10px rgba(196, 196, 196, 0.3),
+    1px -1px 4px rgba(196, 196, 196, 0.1);
+  border-radius: 10px;
+  position: relative;
+}
+
+.men-cate {
+  background-image: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 0%,
+      rgba(230, 177, 27, 0.5) 100%
+    ),
+    url(../components/images/background/men-item-01.jpg);
+}
+
+.women-cate {
+  background-image: linear-gradient(
+      180deg,
+      rgba(196, 196, 196, 0) 0%,
+      rgba(230, 177, 27, 0.5) 100%
+    ),
+    url(../components/images/background/women-item-04.jpg);
+}
+
+.categories-title {
+  text-align: center;
+  padding-top: 186px;
+}
