@@ -1,0 +1,27 @@
+.btn {
+  border-radius: 20px;
+  height: 40px;
+  font-family: Oxygen;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+  border-style: none;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background: #e6b11b;
+}
+
+.btn-wide {
+  width: 80%;
+  display: block;
+  margin: 16px auto;
+}
+
+.btn-secondary {
+  color: #e6b11b;
+  background-color: white;
+  border: 1px solid #e6b11b;
+}

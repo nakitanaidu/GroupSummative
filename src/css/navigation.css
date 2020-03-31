@@ -1,0 +1,27 @@
+.top-nav {
+  display: flex;
+  margin: 24px 32px;
+  justify-content: space-between;
+  height: 24px;
+}
+
+.icon-nav {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-bar {
+  background-color: #e6b11b;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar img {
+  padding: 16px 32px;
+}
