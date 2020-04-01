@@ -43,7 +43,7 @@ class UserItemDetail extends Component {
 
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <input type="textarea" className="grey"></input>
+            <input type="textarea" className="grey textarea-input"></input>
 
             <button className="btn btn-primary btn-narrow btn-right">
               Send
