@@ -1,7 +1,6 @@
 html,
 body {
   margin: 0px;
-  font-family: Oxygen, Maven Pro;
 }
 
 * {
@@ -91,4 +90,24 @@ input {
 .page {
   padding-bottom: 72px;
   margin: auto 32px;
+}
+
+.text-input {
+  width: 100%;
+  border: 1px solid #e6b11b;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 40px;
+  margin: 8px 0px;
+  padding-left: 8px;
+}
+
+.textarea-input {
+  width: 100%;
+  border: 1px solid #e6b11b;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 72px;
+  margin: 8px 0px;
+  padding-left: 8px;
 }

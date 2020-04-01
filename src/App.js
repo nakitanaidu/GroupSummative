@@ -9,12 +9,13 @@ import "./css/userprofile.css";
 import UserProfile from "./components/UsersProfile";
 import DisplayItems from "./components/DisplayItems";
 import UserItemDetail from "./components/UserItemDetail";
+import Edit from "./components/Edit";
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <UserItemDetail />
+        <Edit />
       </React.Fragment>
     );
   }
