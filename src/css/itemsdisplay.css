@@ -1,6 +1,5 @@
 .items-con {
   display: flex;
-  margin: auto 32px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -17,13 +16,13 @@
   height: 250px;
   overflow: hidden;
   margin-bottom: 8px;
+  box-shadow: 0px 4px 10px rgba(196, 196, 196, 0.3),
+    1px -1px 4px rgba(196, 196, 196, 0.1);
+  border-radius: 10px;
 }
 
 .img-con img {
   max-width: 100%;
   min-height: 100%;
   object-fit: cover;
-  box-shadow: 0px 4px 10px rgba(196, 196, 196, 0.3),
-    1px -1px 4px rgba(196, 196, 196, 0.1);
-  border-radius: 10px;
 }

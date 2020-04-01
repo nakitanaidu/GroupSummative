@@ -15,7 +15,16 @@ h2 {
   line-height: 28px;
 }
 
-p {
+h3 {
+  font-family: Oxygen;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+  margin: 12px auto;
+}
+
+p input {
   font-family: Maven Pro;
   font-style: normal;
   font-weight: normal;
@@ -36,9 +45,17 @@ p {
   color: #84ae9f;
 }
 
+.dark {
+  color: #3e2d4a;
+}
+
+.grey {
+  color: #bdbdbd;
+}
+
 .page-tile {
   color: #3e2d4a;
-  margin: 16px 32px;
+  margin: 16px 0;
 }
 
 .logo {
@@ -56,4 +73,5 @@ p {
 
 .page {
   padding-bottom: 56px;
+  margin: auto 32px;
 }
