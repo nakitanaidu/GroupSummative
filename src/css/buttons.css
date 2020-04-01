@@ -7,6 +7,7 @@
   font-size: 16px;
   line-height: 21px;
   border-style: none;
+  display: block;
 }
 
 .btn-primary {
@@ -15,9 +16,16 @@
 }
 
 .btn-wide {
-  width: 80%;
-  display: block;
   margin: 16px auto;
+  width: 100%;
+}
+
+.btn-narrow {
+  width: 47%;
+}
+
+.btn-right {
+  margin: 16px 0px 16px auto;
 }
 
 .btn-secondary {

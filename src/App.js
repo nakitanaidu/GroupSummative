@@ -5,6 +5,8 @@ import "./css/categories.css";
 import "./css/buttons.css";
 import "./css/navigation.css";
 import "./css/itemsdisplay.css";
+import "./css/itemdetail.css";
+import ItemDetail from "./components/ItemDetail";
 import DisplayItems from "./components/DisplayItems";
 import Categories from "./components/Categories";
 import Home from "./components/Home";
@@ -21,6 +23,7 @@ class App extends Component {
           {/* <DisplayItems path=""/> */}
           <Home path="/login-signup"/>
         </Router>
+        <ItemDetail />
       </React.Fragment>
     );
   }
