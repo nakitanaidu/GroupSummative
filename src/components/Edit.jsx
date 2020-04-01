@@ -18,21 +18,21 @@ class Edit extends Component {
             placeholder="Condition"
             className="text-input"
           ></input>
+
           <input
             type="textarea"
             placeholder="Description"
             className="textarea-input"
           ></input>
-          <input
-            type="file"
-            placeholder="Upload Photo"
-            id="img"
-            name="img"
-            accept="image/*"
-            className="text-input"
-          />
 
-          <button className="btn btn-wide btn-primary">Update Item</button>
+          <div className="uploadimg-con">
+            <input type="file" className="upload-img"></input>
+            <span>
+              <p className="dark upload-frame grey">Upload Image</p>
+            </span>
+          </div>
+
+          <button className="btn btn-primary btn-wide">Update Item</button>
         </div>
 
         <NavBar />
