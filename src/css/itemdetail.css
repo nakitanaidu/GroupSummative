@@ -31,16 +31,25 @@
 .seller-seemore {
   display: flex;
   justify-content: space-between;
+  padding: 16px 0px;
 }
 
 .seller-seemore p {
   margin-top: 0px;
 }
 
+.comment-con {
+  padding: 16px 0px;
+}
 .comment-con input {
   width: 100%;
   border: 1px solid #e6b11b;
   box-sizing: border-box;
   border-radius: 10px;
   height: 72px;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
 }
