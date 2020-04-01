@@ -14,10 +14,10 @@ class DisplayItems extends Component {
         <div className="items-con">
           <div className="item-con">
             <div className="img-con">
-              <img src={replaceThisWithPhoto} alt="item-img" />
+              <img src={this.props.image} alt="item-img" />
             </div>
-            <p className="item-title">Replace this with item title</p>
-            <p className="item-price red">Replace 100$</p>
+            <p className="item-title">{this.props.title}</p>
+            <p className="item-price red">{this.props.price}</p>
           </div>
         </div>
 

@@ -8,15 +8,17 @@ import "./css/itemsdisplay.css";
 import DisplayItems from "./components/DisplayItems";
 import Categories from "./components/Categories";
 import Home from "./components/Home";
+import ViewItems from "./components/ViewItems";
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
         <Router>
-          <Categories path="/" />
+          <Categories path="/categories" />
+          <ViewItems path="/view-items" />
           {/* Display items may require /display-items/:id if we use one component*/}
-          <DisplayItems path="/display-items"/>
+          {/* <DisplayItems path=""/> */}
           <Home path="/login-signup"/>
         </Router>
       </React.Fragment>

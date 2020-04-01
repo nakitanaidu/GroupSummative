@@ -1,23 +1,33 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import NavBar from "./NavBar";
 import TopNav from "./TopNav";
 
 class Categories extends Component {
+
+  menDisplay = e => {
+    navigate(`/view-items`);
+  };
+
+  womenDisplay = e => {
+    navigate(`/view-items`);
+  };
+
+
   render() {
     return (
       <div className="categories-page page">
         <TopNav />
         <h2 className="page-tile">Explore!</h2>
-        <div className="categories men-cate">
-          <Link to="/display-items">
+        <div className="categories men-cate" onClick={this.menDisplay}>
+          
           <h2 className="categories-title">Shop for men</h2>
-          </Link>
+   
         </div>
-        <div className="categories women-cate">
-          <Link to="display-items">
+        <div className="categories women-cate" onClick={this.womenDisplay}>
+        
           <h2 className="categories-title">Shop for women</h2>
-          </Link>
+         
         </div>
         <NavBar />
       </div>
