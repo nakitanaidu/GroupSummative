@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 
-
-class ItemDetail extends Component {
+class UserItemDetail extends Component {
+  state = {};
   render() {
     return (
       <React.Fragment>
@@ -24,7 +24,7 @@ class ItemDetail extends Component {
 
           <p className="dark">
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            nisi ut aliquip ex ea commodo consequat. Duis aute
           </p>
 
           <div className="seller-seemore">
@@ -36,11 +36,14 @@ class ItemDetail extends Component {
             </p>
           </div>
 
-          <button className="btn btn-wide btn-primary">Add to Cart</button>
+          <div className="edit-delete">
+            <button className="btn btn-narrow btn-secondary">Delete</button>
+            <button className="btn btn-narrow  btn-primary">Edit</button>
+          </div>
 
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <input type="textarea" className="grey textarea-input"></input>
+            <input type="textarea" className="grey"></input>
 
             <button className="btn btn-primary btn-narrow btn-right">
               Send
@@ -58,4 +61,4 @@ class ItemDetail extends Component {
   }
 }
 
-export default ItemDetail;
+export default UserItemDetail;
