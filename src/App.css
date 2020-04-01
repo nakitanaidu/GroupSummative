@@ -39,24 +39,6 @@ p {
   padding: 0;
 }
 
-input {
-  font-family: Maven Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
-  margin: 0px;
-  padding: 0;
-}
-
-::placeholder {
-  color: #bdbdbd;
-}
-
-:placeholder-shown {
-  color: #3e2d4a;
-}
-
 .red {
   color: #c53a1e;
 }
@@ -98,46 +80,4 @@ input {
 .page {
   padding-bottom: 72px;
   margin: auto 32px;
-}
-
-.text-input {
-  width: 100%;
-  border: 1px solid #e6b11b;
-  box-sizing: border-box;
-  border-radius: 10px;
-  height: 40px;
-  margin: 8px 0px;
-  padding-left: 8px;
-}
-
-.textarea-input {
-  width: 100%;
-  border: 1px solid #e6b11b;
-  box-sizing: border-box;
-  border-radius: 10px;
-  height: 72px;
-  margin: 8px 0px;
-  padding-left: 8px;
-}
-
-.uploadimg-con {
-  position: relative;
-}
-
-.upload-frame {
-  width: 100%;
-  border: 1px solid #e6b11b;
-  box-sizing: border-box;
-  border-radius: 10px;
-  height: 40px;
-  margin: 8px 0px;
-  padding-left: 8px;
-  padding-top: 8px;
-}
-
-.upload-img {
-  top: 0;
-  opacity: 0;
-  position: absolute;
-  z-index: 2;
 }

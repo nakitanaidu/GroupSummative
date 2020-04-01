@@ -25,6 +25,15 @@ class Edit extends Component {
             className="textarea-input"
           ></input>
 
+          <select className="category-options">
+            <option value="women" className="option-style">
+              Women
+            </option>
+            <option value="men" className="option-style">
+              Men
+            </option>
+          </select>
+
           <div className="uploadimg-con">
             <input type="file" className="upload-img"></input>
             <span>

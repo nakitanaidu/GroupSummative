@@ -6,6 +6,7 @@ import "./css/navigation.css";
 import "./css/itemsdisplay.css";
 import "./css/itemdetail.css";
 import "./css/userprofile.css";
+import "./css/inputs.css";
 import UserProfile from "./components/UsersProfile";
 import DisplayItems from "./components/DisplayItems";
 import UserItemDetail from "./components/UserItemDetail";
