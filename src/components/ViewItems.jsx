@@ -13,6 +13,9 @@ export default class ViewItems extends Component {
         }
     }
 
+
+// need to find a way to filter men and women category
+
     componentDidMount() {
         Axios.get(UTILS.show_items).then(
             res => {
