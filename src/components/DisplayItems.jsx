@@ -11,7 +11,7 @@ class DisplayItems extends Component {
   productDisplay = e => {
     let temp = this.props._id;
     console.log(this.props._id);
-    navigate(`/view-product/${temp}`, { state: { uid: temp } });
+    navigate(`/product-details/${temp}`, { state: { uid: temp } });
   };
 
   render() {

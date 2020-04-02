@@ -10,12 +10,13 @@ const crimsonStyle = { color: "crimson" };
 class ItemDetail extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = { items: [] };
+    super(props)
+  
+    this.state = {
+       items: []
+    }
   }
-
- 
-
+  
   componentDidMount () {
     Axios.get(`${UTILS.show_items}/${this.props._id}`).then (
       res => {
@@ -32,7 +33,6 @@ class ItemDetail extends Component {
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-        <span style={crimsonStyle}>Unique ID:{this.props.id}</span>
           <div className="detail-img-con">
 
             {/* props not dispalying */}
@@ -48,8 +48,7 @@ class ItemDetail extends Component {
           </div>
 
           <p className="dark">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+           {this.props.description}
           </p>
 
           <div className="seller-seemore">
