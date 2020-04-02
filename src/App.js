@@ -11,6 +11,13 @@ import Categories from "./components/Categories";
 import Home from "./components/Home";
 import ViewWomen from "./components/ViewWomen";
 import ViewMen from "./components/ViewMen";
+import "./css/userprofile.css";
+import "./css/inputs.css";
+import UserProfile from "./components/UsersProfile";
+import DisplayItems from "./components/DisplayItems";
+import UserItemDetail from "./components/UserItemDetail";
+import Edit from "./components/Edit";
+import Add from "./components/Add";
 
 class App extends Component {
   render() {
@@ -23,6 +30,7 @@ class App extends Component {
           <ItemDetail path="/itemdetails/:id" />
           <Home path="/login-signup"/>
         </Router>
+        {/* <Add /> */}
       </React.Fragment>
     );
   }

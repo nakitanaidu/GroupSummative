@@ -18,8 +18,9 @@ class DisplayItems extends Component {
     return (
       <React.Fragment>
         <TopNav />
-        <div className="items-page page">
+        <div className="page">
           <h2 className="page-tile">Hello Beauty!</h2>
+
           <div className="items-con">
             <div className="item-con">
               <div className="img-con">
