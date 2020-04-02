@@ -13,11 +13,11 @@ import ViewWomen from "./components/ViewWomen";
 import ViewMen from "./components/ViewMen.jsx";
 import "./css/userprofile.css";
 import "./css/inputs.css";
-import UserProfile from "./components/UsersProfile";
-import DisplayItems from "./components/DisplayItems";
-import UserItemDetail from "./components/UserItemDetail";
-import Edit from "./components/Edit";
-import Add from "./components/Add";
+import "./css/cart.css";
+import "./css/checkout.css";
+
+import Cart from "./components/Cart";
+// import CheckOut from "./components/CheckOut";
 
 class App extends Component {
   render() {
@@ -31,6 +31,7 @@ class App extends Component {
           <Home path="/login-signup" />
         </Router>
         {/* <Add /> */}
+        {/* <CheckOut /> */}
       </React.Fragment>
     );
   }
