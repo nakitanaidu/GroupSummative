@@ -1,55 +1,30 @@
 import React, { Component } from "react";
-import * as UTILS from "../utils";
-import Axios from "axios";
+import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 
-const crimsonStyle = { color: "crimson" };
-
-class ItemDetail extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { items: [] };
-  }
-
- 
-
-  componentDidMount () {
-    Axios.get(`${UTILS.show_items}/${this.props._id}`).then (
-      res => {
-        console.log(res.data)
-        this.setState({
-        items: res.data
-        })
-      }
-    )
-  }
-
+class UserItemDetail extends Component {
+  state = {};
   render() {
     return (
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-        <span style={crimsonStyle}>Unique ID:{this.props.id}</span>
           <div className="detail-img-con">
-
-            {/* props not dispalying */}
-            <img src={this.props.image} alt="item-img" />
+            <img src={replaceThisWithPhoto} alt="item-img" />
           </div>
 
-          <h2 className="dark">{this.props.title}</h2>
+          <h2 className="dark">Replace this title</h2>
 
           <div className="price-size-con">
-            <h3 className="green">Price: {this.props.price}</h3>
-            <h3 className="green">Size: {this.props.size}</h3>
-            <h3 className="green">Con: {this.props.condition}</h3>
+            <h3 className="green">Price: </h3>
+            <h3 className="green">Size: </h3>
+            <h3 className="green">Con: </h3>
           </div>
 
           <p className="dark">
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            nisi ut aliquip ex ea commodo consequat. Duis aute
           </p>
 
           <div className="seller-seemore">
@@ -61,11 +36,14 @@ class ItemDetail extends Component {
             </p>
           </div>
 
-          <button className="btn btn-wide btn-primary">Add to Cart</button>
+          <div className="edit-delete">
+            <button className="btn btn-narrow btn-secondary">Delete</button>
+            <button className="btn btn-narrow  btn-primary">Edit</button>
+          </div>
 
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <input type="textarea" className="grey textarea-input"></input>
+            <input type="textarea" className="grey"></input>
 
             <button className="btn btn-primary btn-narrow btn-right">
               Send
@@ -83,4 +61,4 @@ class ItemDetail extends Component {
   }
 }
 
-export default ItemDetail;
+export default UserItemDetail;

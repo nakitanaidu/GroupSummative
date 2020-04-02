@@ -3,6 +3,11 @@ body {
   margin: 0px;
 }
 
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 .App {
   text-align: center;
 }
@@ -21,16 +26,17 @@ h3 {
   font-weight: bold;
   font-size: 18px;
   line-height: 28px;
-  margin: 12px auto;
+  margin: 0px;
 }
 
-p input {
+p {
   font-family: Maven Pro;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 24px;
-  margin: 0px;
+  margin-top: 0px;
+  padding: 0;
 }
 
 .red {
@@ -72,6 +78,6 @@ p input {
 }
 
 .page {
-  padding-bottom: 56px;
+  padding-bottom: 72px;
   margin: auto 32px;
 }

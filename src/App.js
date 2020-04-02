@@ -7,10 +7,17 @@ import "./css/navigation.css";
 import "./css/itemsdisplay.css";
 import "./css/itemdetail.css";
 import ItemDetail from "./components/ItemDetail";
-import DisplayItems from "./components/DisplayItems";
 import Categories from "./components/Categories";
 import Home from "./components/Home";
-import ViewItems from "./components/ViewItems";
+import ViewWomen from "./components/ViewWomen";
+import ViewMen from "./components/ViewMen";
+import "./css/userprofile.css";
+import "./css/inputs.css";
+import UserProfile from "./components/UsersProfile";
+import DisplayItems from "./components/DisplayItems";
+import UserItemDetail from "./components/UserItemDetail";
+import Edit from "./components/Edit";
+import Add from "./components/Add";
 
 class App extends Component {
   render() {
@@ -18,12 +25,12 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <Categories path="/categories" />
-          <ViewItems path="/view-items" />
-          {/* Display items may require /display-items/:id if we use one component*/}
-          {/* <DisplayItems path=""/> */}
+          <ViewWomen path="/view-women" />
+          <ViewMen path="/view-men" />
+          <ItemDetail path="/itemdetails/:id" />
           <Home path="/login-signup"/>
         </Router>
-        <ItemDetail />
+        {/* <Add /> */}
       </React.Fragment>
     );
   }
