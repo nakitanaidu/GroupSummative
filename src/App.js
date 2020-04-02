@@ -7,7 +7,6 @@ import "./css/navigation.css";
 import "./css/itemsdisplay.css";
 import "./css/itemdetail.css";
 import ItemDetail from "./components/ItemDetail";
-import DisplayItems from "./components/DisplayItems";
 import Categories from "./components/Categories";
 import Home from "./components/Home";
 import ViewWomen from "./components/ViewWomen";
@@ -22,8 +21,6 @@ class App extends Component {
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
           <ItemDetail path="/itemdetails/:id" />
-          {/* Display items may require /display-items/:id if we use one component*/}
-          {/* <DisplayItems path=""/> */}
           <Home path="/login-signup"/>
         </Router>
       </React.Fragment>

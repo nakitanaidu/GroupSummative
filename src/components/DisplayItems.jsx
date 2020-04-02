@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import * as UTILS from "../utils";
-import Axios from "axios";
+// import * as UTILS from "../utils";
+// import Axios from "axios";
 import TopNav from "./TopNav";
 import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 import NavBar from "./NavBar";
