@@ -10,17 +10,14 @@ const crimsonStyle = { color: "crimson" };
 class ItemDetail extends Component {
 
   constructor(props) {
-    super(props)
-  
-    this.state = {
-       items: []
-    }
+    super(props);
+   console.log(">>> ", this.props.id);
   }
   
   componentDidMount () {
-    Axios.get(`${UTILS.show_items}/${this.props._id}`).then (
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then (
       res => {
-        console.log(res.data)
+        console.table(res.data)
         this.setState({
         items: res.data
         })
