@@ -11,7 +11,7 @@ class DisplayItems extends Component {
   productDisplay = e => {
     let temp = this.props._id;
     console.log(this.props._id);
-    navigate(`/itemdetails/${temp}`, { state: { uid: temp } });
+    navigate(`/product-details/${temp}`);
   };
 
   render() {
@@ -24,7 +24,7 @@ class DisplayItems extends Component {
           <div className="items-con">
             <div className="item-con">
               <div className="img-con">
-                <img src={this.props.image} alt="item-img" onClick={this.productDisplay}/>
+                <img src={this.props.image} alt="item-img" onClick={this.productDisplay} />
               </div>
               <p className="item-title">{this.props.title}</p>
               <p className="item-price red">{this.props.price}</p>

@@ -14,15 +14,13 @@ class ItemDetail extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { items: [] };
+   console.log(">>> ", this.props.id);
   }
-
- 
-
+  
   componentDidMount () {
-    Axios.get(`${UTILS.show_items}/${this.props._id}`).then (
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then (
       res => {
-        console.log(res.data)
+        console.table(res.data)
         this.setState({
         items: res.data
         })
@@ -35,7 +33,6 @@ class ItemDetail extends Component {
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-        <span style={crimsonStyle}>Unique ID:{this.props.id}</span>
           <div className="detail-img-con">
 
             {/* props not dispalying */}
@@ -51,8 +48,7 @@ class ItemDetail extends Component {
           </div>
 
           <p className="dark">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+           {this.props.description}
           </p>
 
           <div className="seller-seemore">
