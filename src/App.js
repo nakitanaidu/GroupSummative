@@ -24,6 +24,11 @@ import ItemDetail from "./components/ItemDetail"
 import Add from "./components/Add"
 import Edit from "./components/Edit"
 import Delete from "./components/Delete"
+import "./css/inputs.css";
+import "./css/cart.css";
+import "./css/checkout.css";
+import Cart from "./components/Cart";
+import CheckOut from "./components/CheckOut";
 
 class App extends Component {
   render() {

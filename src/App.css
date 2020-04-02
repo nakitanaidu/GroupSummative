@@ -81,3 +81,11 @@ p {
   padding-bottom: 72px;
   margin: auto 32px;
 }
+
+hr {
+  height: 0px;
+  left: 32px;
+  top: 474px;
+  border: 1px solid #f2f2f2;
+  margin: 16px 0px;
+}
