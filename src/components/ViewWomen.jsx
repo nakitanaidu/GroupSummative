@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Axios from "axios";
 import * as UTILS from "../utils";
 import DisplayItems from './DisplayItems';
+import ItemDetail from './ItemDetail';
 
 export default class ViewItems extends Component {
 
@@ -14,10 +15,15 @@ export default class ViewItems extends Component {
     }
 
 
-// need to find a way to filter men and women category
+// need to find a way to filter
+//ItemDetail.find({ mens_category: "Men's clothing" })
 
-    componentDidMount() {
-        Axios.get(UTILS.show_items).then(
+componentDidMount(){
+    this.getData()
+}
+
+    getData = e => {
+        Axios.get(UTILS.show_women).then(
             res => {
                 console.table(res.data)
                 this.setState({
