@@ -21,11 +21,11 @@ class App extends Component {
           <Categories path="/categories" />
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
+          <ItemDetail path="/itemdetails/:id" />
           {/* Display items may require /display-items/:id if we use one component*/}
           {/* <DisplayItems path=""/> */}
           <Home path="/login-signup"/>
         </Router>
-        {/* <ItemDetail /> */}
       </React.Fragment>
     );
   }

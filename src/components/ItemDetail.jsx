@@ -1,16 +1,32 @@
 import React, { Component } from "react";
+import * as UTILS from "../utils";
+import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 
 class ItemDetail extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { items: {} };
+  }
+
+  componentDidMount(){
+    Axios.get(`${UTILS.show_items}/${this.props._id}`).then (
+      res => {
+        this.setState({items:res.data})
+      }
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
           <div className="detail-img-con">
-            <img src={replaceThisWithPhoto} alt="item-img" />
+            <img src={this.props.image} alt="item-img" />
           </div>
 
           <h2 className="dark">Replace this title</h2>
