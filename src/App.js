@@ -10,7 +10,7 @@ import ItemDetail from "./components/ItemDetail";
 import Categories from "./components/Categories";
 import Home from "./components/Home";
 import ViewWomen from "./components/ViewWomen";
-import ViewMen from "./components/ViewMen";
+import ViewMen from "./components/ViewMen.jsx";
 import "./css/userprofile.css";
 import "./css/inputs.css";
 import UserProfile from "./components/UsersProfile";
@@ -18,7 +18,6 @@ import DisplayItems from "./components/DisplayItems";
 import UserItemDetail from "./components/UserItemDetail";
 import Edit from "./components/Edit";
 import Add from "./components/Add";
-import ViewBoth from "./components/ViewBoth";
 
 class App extends Component {
   render() {
