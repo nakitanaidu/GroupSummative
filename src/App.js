@@ -10,7 +10,8 @@ import ItemDetail from "./components/ItemDetail";
 import DisplayItems from "./components/DisplayItems";
 import Categories from "./components/Categories";
 import Home from "./components/Home";
-import ViewItems from "./components/ViewItems";
+import ViewWomen from "./components/ViewWomen";
+import ViewMen from "./components/ViewMen";
 
 class App extends Component {
   render() {
@@ -18,12 +19,13 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <Categories path="/categories" />
-          <ViewItems path="/view-items" />
+          <ViewWomen path="/view-women" />
+          <ViewMen path="/view-men" />
           {/* Display items may require /display-items/:id if we use one component*/}
           {/* <DisplayItems path=""/> */}
           <Home path="/login-signup"/>
         </Router>
-        <ItemDetail />
+        {/* <ItemDetail /> */}
       </React.Fragment>
     );
   }

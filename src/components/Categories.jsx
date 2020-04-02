@@ -6,11 +6,11 @@ import TopNav from "./TopNav";
 class Categories extends Component {
 
   menDisplay = e => {
-    navigate(`/view-items`);
+    navigate(`/view-men`);
   };
 
   womenDisplay = e => {
-    navigate(`/view-items`);
+    navigate(`/view-women`);
   };
 
 

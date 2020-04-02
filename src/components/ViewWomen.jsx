@@ -13,8 +13,16 @@ export default class ViewItems extends Component {
         }
     }
 
-    componentDidMount() {
-        Axios.get(UTILS.show_items).then(
+
+// need to find a way to filter
+//ItemDetail.find({ mens_category: "Men's clothing" })
+
+componentDidMount(){
+    this.getData()
+}
+
+    getData = e => {
+        Axios.get(UTILS.show_women).then(
             res => {
                 console.table(res.data)
                 this.setState({
@@ -38,7 +46,6 @@ export default class ViewItems extends Component {
                                 <DisplayItems
                                 key={i}
                                 womens_category={items.womens_category}
-                                mens_category={items.mens_category}
                                 image={items.image}
                                 title={items.title}
                                 price={items.price}
@@ -52,8 +59,6 @@ export default class ViewItems extends Component {
                         })}
                     </ul>
                 </div>
-
-
             </React.Fragment>
         )
     }
