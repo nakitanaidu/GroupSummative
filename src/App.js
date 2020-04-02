@@ -18,6 +18,7 @@ import DisplayItems from "./components/DisplayItems";
 import UserItemDetail from "./components/UserItemDetail";
 import Edit from "./components/Edit";
 import Add from "./components/Add";
+import ViewBoth from "./components/ViewBoth";
 
 class App extends Component {
   render() {
@@ -27,8 +28,8 @@ class App extends Component {
           <Categories path="/categories" />
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
-          <ItemDetail path="/itemdetails/:id" />
-          <Home path="/login-signup"/>
+          <ItemDetail path="/product-details/:id" />
+          <Home path="/login-signup" />
         </Router>
         {/* <Add /> */}
       </React.Fragment>
