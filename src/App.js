@@ -27,8 +27,8 @@ class App extends Component {
           <Categories path="/categories" />
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
-          <ItemDetail path="/itemdetails/:id" />
-          <Home path="/login-signup"/>
+          <ItemDetail path="/view-product/:id" />
+          <Home path="/login-signup" />
         </Router>
         {/* <Add /> */}
       </React.Fragment>
