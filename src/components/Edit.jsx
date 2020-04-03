@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
-class Edit extends Component {
+class Edit extends Component {z
   render() {
     return (
       <React.Fragment>
