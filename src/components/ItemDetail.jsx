@@ -30,7 +30,7 @@ class ItemDetail extends Component {
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-          {/* props not dispalying */}
+         
           {this.state.items.map((item, i) => {
             return (
               <React.Fragment key={i}>
