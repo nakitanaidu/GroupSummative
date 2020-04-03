@@ -1,31 +1,55 @@
 import React, { Component } from "react";
+import * as UTILS from "../utils";
+import Axios from "axios";
 import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
 class UserItemDetail extends Component {
-  state = {};
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: []
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then(res => {
+      console.table(res.data);
+      this.setState({
+        items: res.data
+      });
+    });
+  }
+
+
+  // state = {};
   render() {
     return (
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-          <div className="detail-img-con">
-            <img src={replaceThisWithPhoto} alt="item-img" />
-          </div>
+          {/* props not dispalying */}
+          {this.state.items.map((item, i) => {
+            return (
+              <React.Fragment key={i}>
+                <div className="detail-img-con">
+                  <img src={item.image} alt="item-img" />
+                </div>
 
-          <h2 className="dark">Replace this title</h2>
+                <h2 className="dark">{item.title}</h2>
 
-          <div className="price-size-con">
-            <h3 className="green">Price: </h3>
-            <h3 className="green">Size: </h3>
-            <h3 className="green">Con: </h3>
-          </div>
+                <div className="price-size-con">
+                  <h3 className="green">Price: {item.price}</h3>
+                  <h3 className="green">Size: {item.size}</h3>
+                  <h3 className="green">Con: {item.condition}</h3>
+                </div>
 
-          <p className="dark">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute
-          </p>
+                <p className="dark">{item.description}</p>
+              </React.Fragment>
+            );
+          })}
 
           <div className="seller-seemore">
             <p className="grey">Seller: </p>

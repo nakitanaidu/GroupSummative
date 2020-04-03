@@ -6,17 +6,22 @@ import "./css/buttons.css";
 import "./css/navigation.css";
 import "./css/itemsdisplay.css";
 import "./css/itemdetail.css";
-import ItemDetail from "./components/ItemDetail";
+
 import Categories from "./components/Categories";
+import UsersProfile from "./components/UsersProfile";
 import Home from "./components/Home";
+import ViewAll from "./components/ViewAll";
 import ViewWomen from "./components/ViewWomen";
 import ViewMen from "./components/ViewMen.jsx";
+import ItemDetail from "./components/ItemDetail";
 import "./css/userprofile.css";
 import "./css/inputs.css";
 import "./css/cart.css";
 import "./css/checkout.css";
-
 import Cart from "./components/Cart";
+import UserItemDetail from "./components/UserItemDetail";
+
+
 // import CheckOut from "./components/CheckOut";
 
 class App extends Component {
@@ -25,9 +30,12 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <Categories path="/categories" />
+          <UsersProfile path="/profile" />
+          <ViewAll path="/user-items" />
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
           <ItemDetail path="/product-details/:id" />
+          <UserItemDetail path="/user-product-details/:id" />
           <Home path="/login-signup" />
         </Router>
         {/* <Add /> */}

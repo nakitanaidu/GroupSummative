@@ -1,10 +1,16 @@
 import React, { Component } from "react";
+import { navigate } from "@reach/router";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import replaceThisWithUserPhoto from "./images/background/women-item-02.jpg";
 
-class UserProfile extends Component {
-  state = {};
+class UsersProfile extends Component {
+
+  usersItems = e => {
+    navigate(`/user-items`);
+  };
+
+  // state = {};
   render() {
     return (
       <React.Fragment>
@@ -26,7 +32,7 @@ class UserProfile extends Component {
 
           <button className="btn btn-secondary btn-wide">Edit Profile</button>
 
-          <div className="wide-img-card showitem">
+          <div className="wide-img-card showitem" onClick={this.usersItems}>
             <h2 className="img-card-title ">Your Items</h2>
           </div>
 
@@ -41,4 +47,4 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+export default UsersProfile;
