@@ -10,6 +10,10 @@ class UsersProfile extends Component {
     navigate(`/user-items`);
   };
 
+  addUserItem = e => {
+    navigate(`/add-user-item`);
+  };
+
   // state = {};
   render() {
     return (
@@ -36,7 +40,7 @@ class UsersProfile extends Component {
             <h2 className="img-card-title ">Your Items</h2>
           </div>
 
-          <div className="wide-img-card additem">
+          <div className="wide-img-card additem" onClick={this.addUserItem}>
             <h2 className="img-card-title ">Add New Item</h2>
           </div>
         </div>

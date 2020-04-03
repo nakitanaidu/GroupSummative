@@ -14,6 +14,7 @@ import ViewAll from "./components/ViewAll";
 import ViewWomen from "./components/ViewWomen";
 import ViewMen from "./components/ViewMen.jsx";
 import ItemDetail from "./components/ItemDetail";
+import Add from "./components/Add"
 import "./css/userprofile.css";
 import "./css/inputs.css";
 import "./css/cart.css";
@@ -37,8 +38,9 @@ class App extends Component {
           <ItemDetail path="/product-details/:id" />
           <UserItemDetail path="/user-product-details/:id" />
           <Home path="/login-signup" />
+          <Add path="/add-user-item"/>
         </Router>
-        {/* <Add /> */}
+        
         {/* <CheckOut /> */}
       </React.Fragment>
     );
