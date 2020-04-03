@@ -21,6 +21,7 @@ import "./css/cart.css";
 import "./css/checkout.css";
 import Cart from "./components/Cart";
 import UserItemDetail from "./components/UserItemDetail";
+import Edit from "./components/Edit";
 
 
 // import CheckOut from "./components/CheckOut";
@@ -37,6 +38,7 @@ class App extends Component {
           <ViewMen path="/view-men" />
           <ItemDetail path="/product-details/:id" />
           <UserItemDetail path="/user-product-details/:id" />
+          <Edit path="/edit-details/:id" />
           <Home path="/login-signup" />
           <Add path="/add-user-item"/>
         </Router>
