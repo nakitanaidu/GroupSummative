@@ -14,7 +14,7 @@ import ViewAll from "./components/ViewAll";
 import ViewWomen from "./components/ViewWomen";
 import ViewMen from "./components/ViewMen.jsx";
 import ItemDetail from "./components/ItemDetail";
-import Add from "./components/Add"
+import Add from "./components/Add";
 import "./css/userprofile.css";
 import "./css/inputs.css";
 import "./css/cart.css";
@@ -22,7 +22,6 @@ import "./css/checkout.css";
 import Cart from "./components/Cart";
 import UserItemDetail from "./components/UserItemDetail";
 import Edit from "./components/Edit";
-
 
 // import CheckOut from "./components/CheckOut";
 
@@ -40,9 +39,10 @@ class App extends Component {
           <UserItemDetail path="/user-product-details/:id" />
           <Edit path="/edit-details/:id" />
           <Home path="/login-signup" />
-          <Add path="/add-user-item"/>
+          <Add path="/add-user-item" />
+          <Cart path="/cart" />
         </Router>
-        
+
         {/* <CheckOut /> */}
       </React.Fragment>
     );
