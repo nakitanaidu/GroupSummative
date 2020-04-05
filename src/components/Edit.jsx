@@ -24,7 +24,7 @@ class Edit extends Component {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then(
       res => {
         // console.table(res.data);
-        this.setState({ items: res.data });
+        this.setState({ items: res.data[0] });
       }
     );
   }
