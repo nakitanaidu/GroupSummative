@@ -5,10 +5,6 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 
-<<<<<<< HEAD
-=======
-const crimsonStyle = { color: "crimson" };
->>>>>>> 2b675d4787020a60db4bd92b6c2c85d260e80bcd
 
 class ItemDetail extends Component {
 
