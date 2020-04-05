@@ -14,15 +14,17 @@ class Edit extends Component {
     this.myRef = React.createRef();
   }
 
-  gotoEvents = e => {
-    navigate(`/user-items`);
+  gotoProducts = e => {
+    let temp = this.props.id;
+    console.log(this.props.id);
+    navigate(`/edit-details/${temp}`);
   };
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then(
       res => {
         // console.table(res.data);
-        this.setState({ items: res.data });
+        this.setState({ items: res.data[0] });
       }
     );
   }

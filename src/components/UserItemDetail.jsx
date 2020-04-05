@@ -6,7 +6,7 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
 class UserItemDetail extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,8 +15,8 @@ class UserItemDetail extends Component {
   }
 
   gotoEdit = e => {
-    let temp = this.props._id;
-    console.log(this.props._id);
+    let temp = this.props.id;
+    console.log(this.props.id);
     navigate(`/edit-details/${temp}`);
   };
 
@@ -63,26 +63,25 @@ class UserItemDetail extends Component {
 
                 <p className="dark">{item.description}</p>
                 <div className="seller-seemore">
-            <p className="grey">Seller: </p>
-            <p>
-              <a href="REPLACE THIS LINK" className="grey">
-                See more here
+                  <p className="grey">Seller: </p>
+                  <p>
+                    <a href="REPLACE THIS LINK" className="grey">
+                      See more here
               </a>
-            </p>
-          </div>
+                  </p>
+                </div>
 
-          <div className="edit-delete">
-            <button className="btn btn-narrow btn-secondary" _id={item._id}
-              onClick={this.removeProduct}>Delete</button>
-            <button
-              className="btn btn-narrow  btn-primary"
-              onClick={this.gotoEdit}>Edit</button>
-          </div>
+                <div className="edit-delete">
+                  <button className="btn btn-narrow btn-secondary" _id={item._id}
+                    onClick={this.removeProduct}>Delete</button>
+                  <button
+                    className="btn btn-narrow  btn-primary"
+                    onClick={this.gotoEdit}>Edit</button>
+                </div>
               </React.Fragment>
             );
           })}
 
-        
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
             <input type="textarea" className="grey textarea-input"></input>
