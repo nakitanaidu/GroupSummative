@@ -4,33 +4,31 @@ import NavBar from "./NavBar";
 import TopNav from "./TopNav";
 
 class Categories extends Component {
-
-  menDisplay = e => {
+  menDisplay = (e) => {
     navigate(`/view-men`);
   };
 
-  womenDisplay = e => {
+  womenDisplay = (e) => {
     navigate(`/view-women`);
   };
 
-
   render() {
     return (
-      <div className="categories-page page">
+      <React.Fragment>
         <TopNav />
-        <h2 className="page-tile">Explore!</h2>
-        <div className="categories men-cate" onClick={this.menDisplay}>
-          
-          <h2 className="categories-title">Shop for men</h2>
-   
-        </div>
-        <div className="categories women-cate" onClick={this.womenDisplay}>
-        
-          <h2 className="categories-title">Shop for women</h2>
-         
+        <div className="page">
+          <h2 className="page-tile">Explore!</h2>
+
+          <div className="categories men-cate" onClick={this.menDisplay}>
+            <h2 className="categories-title">Shop for men</h2>
+          </div>
+
+          <div className="categories women-cate" onClick={this.womenDisplay}>
+            <h2 className="categories-title">Shop for women</h2>
+          </div>
         </div>
         <NavBar />
-      </div>
+      </React.Fragment>
     );
   }
 }

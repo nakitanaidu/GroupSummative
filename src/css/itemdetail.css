@@ -2,7 +2,7 @@
   width: 100%;
   height: 300px;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   box-shadow: 0px 4px 10px rgba(196, 196, 196, 0.3),
     1px -1px 4px rgba(196, 196, 196, 0.1);
   border-radius: 10px;
@@ -15,8 +15,8 @@
 }
 
 .price-size-con {
-  display: flex;
-  justify-content: space-between;
+  display: block;
+  margin: 8px auto;
 }
 
 .item-detail h2 {
@@ -25,7 +25,6 @@
 
 .price-size-con h3 {
   margin: 0;
-  padding: 8px 0;
 }
 
 .seller-seemore {

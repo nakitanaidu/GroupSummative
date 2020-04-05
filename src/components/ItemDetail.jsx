@@ -8,15 +8,15 @@ class ItemDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
     };
   }
 
   componentDidMount() {
-    Axios.get(`${UTILS.show_items}/${this.props.id}`).then(res => {
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       console.table(res.data);
       this.setState({
-        items: res.data
+        items: res.data,
       });
     });
   }
