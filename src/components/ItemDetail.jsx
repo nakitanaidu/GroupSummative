@@ -3,11 +3,6 @@ import * as UTILS from "../utils";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-<<<<<<< HEAD
-import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
-
-=======
->>>>>>> cad222764f8095010c50ddc3071f3d066d314b9b
 
 class ItemDetail extends Component {
   constructor(props) {
