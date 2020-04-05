@@ -1,33 +1,68 @@
 import React, { Component } from "react";
-import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
+import * as UTILS from "../utils";
+import { navigate } from "@reach/router";
+import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
 class UserItemDetail extends Component {
-  state = {};
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: []
+    };
+  }
+
+  gotoEdit = e => {
+    let temp = this.props._id;
+    console.log(this.props._id);
+    navigate(`/edit-details/${temp}`);
+  };
+
+  componentDidMount() {
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then(res => {
+      console.table(res.data);
+      this.setState({
+        items: res.data
+      });
+    });
+  }
+
+  removeProduct = evt => {
+    var index = evt.target.getAttribute("data-uuid");
+    console.table(this.state.items);
+    Axios.delete(`${UTILS.show_items}/${this.props.id}`).then(res => {
+      console.log(res.data);
+    });
+  };
+
+
+
+  // state = {};
   render() {
     return (
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-          <div className="detail-img-con">
-            <img src={replaceThisWithPhoto} alt="item-img" />
-          </div>
+          {/* props not dispalying */}
+          {this.state.items.map((item, i) => {
+            return (
+              <React.Fragment key={i}>
+                <div className="detail-img-con">
+                  <img src={item.image} alt="item-img" />
+                </div>
 
-          <h2 className="dark">Replace this title</h2>
+                <h2 className="dark">{item.title}</h2>
 
-          <div className="price-size-con">
-            <h3 className="green">Price: </h3>
-            <h3 className="green">Size: </h3>
-            <h3 className="green">Con: </h3>
-          </div>
+                <div className="price-size-con">
+                  <h3 className="green">Price: {item.price}</h3>
+                  <h3 className="green">Size: {item.size}</h3>
+                  <h3 className="green">Con: {item.condition}</h3>
+                </div>
 
-          <p className="dark">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute
-          </p>
-
-          <div className="seller-seemore">
+                <p className="dark">{item.description}</p>
+                <div className="seller-seemore">
             <p className="grey">Seller: </p>
             <p>
               <a href="REPLACE THIS LINK" className="grey">
@@ -37,10 +72,17 @@ class UserItemDetail extends Component {
           </div>
 
           <div className="edit-delete">
-            <button className="btn btn-narrow btn-secondary">Delete</button>
-            <button className="btn btn-narrow  btn-primary">Edit</button>
+            <button className="btn btn-narrow btn-secondary" _id={item._id}
+              onClick={this.removeProduct}>Delete</button>
+            <button
+              className="btn btn-narrow  btn-primary"
+              onClick={this.gotoEdit}>Edit</button>
           </div>
+              </React.Fragment>
+            );
+          })}
 
+        
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
             <input type="textarea" className="grey textarea-input"></input>

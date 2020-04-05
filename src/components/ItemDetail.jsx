@@ -3,25 +3,27 @@ import * as UTILS from "../utils";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+<<<<<<< HEAD
 import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
 
+=======
+>>>>>>> cad222764f8095010c50ddc3071f3d066d314b9b
 
 class ItemDetail extends Component {
-
   constructor(props) {
     super(props);
-   console.log(">>> ", this.props.id);
+    this.state = {
+      items: []
+    };
   }
-  
-  componentDidMount () {
-    Axios.get(`${UTILS.show_items}/${this.props.id}`).then (
-      res => {
-        console.table(res.data)
-        this.setState({
+
+  componentDidMount() {
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then(res => {
+      console.table(res.data);
+      this.setState({
         items: res.data
-        })
-      }
-    )
+      });
+    });
   }
 
   render() {
@@ -29,23 +31,26 @@ class ItemDetail extends Component {
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-          <div className="detail-img-con">
+          {/* props not dispalying */}
+          {this.state.items.map((item, i) => {
+            return (
+              <React.Fragment key={i}>
+                <div className="detail-img-con">
+                  <img src={item.image} alt="item-img" />
+                </div>
 
-            {/* props not dispalying */}
-            <img src={this.props.image} alt="item-img" />
-          </div>
+                <h2 className="dark">{item.title}</h2>
 
-          <h2 className="dark">{this.props.title}</h2>
+                <div className="price-size-con">
+                  <h3 className="green">Price: {item.price}</h3>
+                  <h3 className="green">Size: {item.size}</h3>
+                  <h3 className="green">Con: {item.condition}</h3>
+                </div>
 
-          <div className="price-size-con">
-            <h3 className="green">Price: {this.props.price}</h3>
-            <h3 className="green">Size: {this.props.size}</h3>
-            <h3 className="green">Con: {this.props.condition}</h3>
-          </div>
-
-          <p className="dark">
-           {this.props.description}
-          </p>
+                <p className="dark">{item.description}</p>
+              </React.Fragment>
+            );
+          })}
 
           <div className="seller-seemore">
             <p className="grey">Seller: </p>

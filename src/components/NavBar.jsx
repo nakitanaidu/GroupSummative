@@ -9,7 +9,12 @@ class NavBar extends Component {
   render() {
     return (
       <div className="nav-bar">
+
+        <Link to="/profile">
         <img src={user} alt="user" className="icon-nav" />
+        </Link>
+        
+
         <Link to="/categories">
         <img src={home} alt="home" className="icon-nav" />
         </Link>

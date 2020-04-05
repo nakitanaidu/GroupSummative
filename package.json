@@ -10,10 +10,20 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+<<<<<<< HEAD
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "script": "^0.1.4"
+=======
+    "bootstrap": "^4.4.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "react-skylight": "^0.5.1",
+    "react-uuid": "^1.0.2",
+    "reactstrap": "^8.4.1"
+>>>>>>> cad222764f8095010c50ddc3071f3d066d314b9b
   },
   "scripts": {
     "start": "react-scripts start",
