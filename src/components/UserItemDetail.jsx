@@ -6,18 +6,19 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
 class UserItemDetail extends Component {
-  gotoEdit = e => {
-    let temp = this.props._id;
-    console.log(this.props._id);
-    navigate(`/edit-details/${temp}`);
-  };
-
+  
   constructor(props) {
     super(props);
     this.state = {
       items: []
     };
   }
+
+  gotoEdit = e => {
+    let temp = this.props._id;
+    console.log(this.props._id);
+    navigate(`/edit-details/${temp}`);
+  };
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then(res => {
@@ -27,6 +28,16 @@ class UserItemDetail extends Component {
       });
     });
   }
+
+  removeProduct = evt => {
+    var index = evt.target.getAttribute("data-uuid");
+    console.table(this.state.items);
+    Axios.delete(`${UTILS.show_items}/${this.props.id}`).then(res => {
+      console.log(res.data);
+    });
+  };
+
+
 
   // state = {};
   render() {
@@ -51,11 +62,7 @@ class UserItemDetail extends Component {
                 </div>
 
                 <p className="dark">{item.description}</p>
-              </React.Fragment>
-            );
-          })}
-
-          <div className="seller-seemore">
+                <div className="seller-seemore">
             <p className="grey">Seller: </p>
             <p>
               <a href="REPLACE THIS LINK" className="grey">
@@ -65,15 +72,17 @@ class UserItemDetail extends Component {
           </div>
 
           <div className="edit-delete">
-            <button className="btn btn-narrow btn-secondary">Delete</button>
+            <button className="btn btn-narrow btn-secondary" _id={item._id}
+              onClick={this.removeProduct}>Delete</button>
             <button
               className="btn btn-narrow  btn-primary"
-              onClick={this.gotoEdit}
-            >
-              Edit
-            </button>
+              onClick={this.gotoEdit}>Edit</button>
           </div>
+              </React.Fragment>
+            );
+          })}
 
+        
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
             <input type="textarea" className="grey"></input>
