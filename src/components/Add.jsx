@@ -1,8 +1,33 @@
 import React, { Component } from "react";
+import * as UTILS from "../utils";
+import { navigate } from "@reach/router";
+import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
 class Add extends Component {
+
+  // addProduct = e => {
+  //   e.preventDefault();
+  //   var formData = new FormData(this.formRef.current);
+ 
+  //   if (formData.get("items_id") === "0") {
+  //     alert("Please select an item);
+  //     return;
+  //   }
+ 
+  //   // FYI: form still works even if there is no image included
+  //   // forms with images look a bit different - we need to add this line.
+  //   var settings = {
+  //     headers: { "Content-Type": "multipart/form-data" }
+  //   };
+ 
+  //   Axios.post(`${UTILS.show_items}`, formData, settings).then(res => {
+  //     console.log(res);
+  //   });
+  // };
+
+
   render() {
     return (
       <React.Fragment>

@@ -14,8 +14,10 @@ class Edit extends Component {
     this.myRef = React.createRef();
   }
 
-  gotoEvents = e => {
-    navigate(`/user-items`);
+  gotoProducts = e => {
+    let temp = this.props.id;
+    console.log(this.props.id);
+    navigate(`/edit-details/${temp}`);
   };
 
   componentDidMount() {
