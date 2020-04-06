@@ -13,7 +13,9 @@ class UsersProfile extends Component {
     }
   }
   
-
+gotoUserEdit = e => {
+  navigate('/edit-profile')
+}
   
 usersItems = e => {
   navigate(`/user-items`);
@@ -43,7 +45,7 @@ render() {
           </div>
         </div>
 
-        <button className="btn btn-secondary btn-wide">Edit Profile</button>
+        <button className="btn btn-secondary btn-wide" onClick={this.gotoUserEdit}>Edit Profile</button>
 
         <div className="wide-img-card showitem" onClick={this.usersItems}>
           <h2 className="img-card-title ">Your Items</h2>
