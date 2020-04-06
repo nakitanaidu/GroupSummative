@@ -72,24 +72,28 @@ class Edit extends Component {
               type="text"
               placeholder="Title"
               className="text-input"
+              name="title"
               defaultValue={title}
             ></input>
             <input
               type="text"
               placeholder="Price"
               className="text-input"
+              name="price"
               defaultValue={price}
             ></input>
             <input
               type="text"
               placeholder="Size"
               className="text-input"
+              name="size"
               defaultValue={size}
             ></input>
             <input
               type="text"
               placeholder="Condition"
               className="text-input"
+              name="condition"
               defaultValue={condition}
             ></input>
             {/*  V IMP - input name should match model name on server */}
@@ -104,6 +108,7 @@ class Edit extends Component {
               <option
                 value="women"
                 className="option-style"
+                name="womens_category"
                 defaultValue={womens_category}
               >
                 Women
@@ -111,6 +116,7 @@ class Edit extends Component {
               <option
                 value="men"
                 className="option-style"
+                name="mens_category"
                 defaultValue={mens_category}
               >
                 Men
@@ -121,6 +127,7 @@ class Edit extends Component {
                 type="file"
                 name="image"
                 className="upload-img"
+                name="image"
                 defaultValue={image}
               ></input>
               <span>
