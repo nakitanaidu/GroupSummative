@@ -49,7 +49,7 @@ class App extends Component {
           <UserItemDetail path="/user-product-details/:id" />
           <Edit path="/edit-details/:id" />
           <Delete path="delete-details/:id"/>
-          <Home path="/login-signup" />
+          <Home path="/" />
           <Add path="/add-user-item" />
           <Cart path="/cart" />
         </Router>

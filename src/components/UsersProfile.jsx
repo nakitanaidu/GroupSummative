@@ -5,7 +5,16 @@ import NavBar from "./NavBar";
 import replaceThisWithUserPhoto from "./images/background/women-item-02.jpg";
 
 class UsersProfile extends Component {
+  constructor()
+  {
+      super();
+    this.state={
+      data:'',
+    }
+  }
+  
 
+  
 usersItems = e => {
   navigate(`/user-items`);
 };
@@ -52,3 +61,6 @@ render() {
 }
 
 export default UsersProfile;
+
+
+
