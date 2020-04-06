@@ -1,17 +1,14 @@
-.categories-page {
-  position: relative;
-}
-
 .categories {
-  margin: auto 32px;
+  width: 100%;
   text-align: center;
   color: white;
-  height: 240px;
+  height: 220px;
   background-size: cover;
   box-shadow: 0px 4px 10px rgba(196, 196, 196, 0.3),
     1px -1px 4px rgba(196, 196, 196, 0.1);
   border-radius: 10px;
   position: relative;
+  margin: 16px auto;
 }
 
 .men-cate {
@@ -34,5 +31,5 @@
 
 .categories-title {
   text-align: center;
-  padding-top: 186px;
+  padding-top: 55%;
 }
