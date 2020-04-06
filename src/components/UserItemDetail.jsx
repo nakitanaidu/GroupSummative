@@ -30,7 +30,7 @@ class UserItemDetail extends Component {
   }
 
   removeProduct = evt => {
-    var index = evt.target.getAttribute("data-uuid");
+    // var index = evt.target.getAttribute("data-uuid");
     console.table(this.state.items);
     Axios.delete(`${UTILS.show_items}/${this.props.id}`).then(res => {
       console.log(res.data);
