@@ -39,7 +39,7 @@ class App extends Component {
         <Router>
           <Categories path="/categories" />
           <UserProfile path="/profile" />
-          <EditProfile path="/EditProfile" />
+          <EditProfile path="/edit-profile" />
           <SignUpForm path="/signup" />
           <ViewAll path="/user-items" />
           <ViewWomen path="/view-women" />
