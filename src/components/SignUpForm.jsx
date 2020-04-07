@@ -7,7 +7,7 @@ import homephoto from "./images/main-illustration.png";
 class SignUpForm extends Component {
 
 
-  // Saving user Info to profile page
+  
   userData;
  
   constructor(props) {
@@ -64,14 +64,38 @@ class SignUpForm extends Component {
   componentDidUpdate(nextProps, nextState) {
     localStorage.setItem('user', JSON.stringify(nextState));
   }
-  
-    componentDidUpdate(nextProps, nextState) {
-      localStorage.setItem('user', JSON.stringify(nextState));
-    }
-  
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   render() {
     return <React.Fragment>
       <img src={logo} alt="logo" className="logo" />
@@ -95,8 +119,4 @@ class SignUpForm extends Component {
   }
 }
 
-
-
-
 export default SignUpForm;
-
