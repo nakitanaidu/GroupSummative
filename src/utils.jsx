@@ -1,7 +1,7 @@
 const url = "http://localhost:4001";
 
 // don't add public on the end
-const images_folder = url + "/";
+const images_folder = url + "/assets/";
 const show_items = url + "/api/itemdetails";
 const update_item = url + "/api/itemdetails";
 const show_women = url + "/api/itemdetails/women";

@@ -9,8 +9,7 @@ import { Util } from "reactstrap";
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {}, isLoaded: false,
-   };
+    this.state = { items: {}, isLoaded: false };
     // get handle on the DOM element
     this.myRef = React.createRef();
   }
@@ -22,6 +21,22 @@ class Edit extends Component {
     navigate(`/edit-details/${temp}`);
   };
 
+  checkForURL = (s = "") => {
+    console.log("s = ", s);
+    if (s.startsWith("http")) {
+      return true;
+    }
+
+    if (s.startsWith("httsp")) {
+      return true;
+    }
+
+    if (s.startsWith("//")) {
+      return true;
+    }
+
+    return false;
+  };
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
@@ -35,6 +50,10 @@ class Edit extends Component {
     e.preventDefault();
     // grab reference to the form data
     var formData = new FormData(this.myRef.current);
+    //lets see what we have in the form
+    for (var p of formData.entries()) {
+      console.log(p);
+    }
 
     var settings = {
       headers: { "Content-Type": "multipart/form-data" },
@@ -48,11 +67,10 @@ class Edit extends Component {
         console.log(`Error updating ${this.props.id}`);
       }
     );
-
   };
 
   render() {
-    const {
+    let {
       womens_category,
       mens_category,
       image,
@@ -62,12 +80,12 @@ class Edit extends Component {
       condition,
       description,
     } = this.state.items;
-    const image_path = UTILS.assets_url + image
-    // how/where to display the changed image??
-    // src={UTILS.assets_url + image}
-    // const image_path = UTILS.assets_url + image;
-    // http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg
-    
+
+    // only append server url to images that are not external
+    if (typeof image === "string" && this.checkForURL(image) === false) {
+      image = UTILS.images_folder + image;
+    }
+
     console.log("hello ", this.state.isLoaded);
 
     return (
@@ -136,18 +154,27 @@ class Edit extends Component {
             </select>
 
             <div className="uploadimg-con">
-              {/* src??? */}
+              <figure>
+                <img
+                  src={image}
+                  width="100px"
+                  height="100px"
+                  alt="current choice"
+                />
+                {/* <figcaption>Name: {image}</figcaption> */}
+              </figure>
               <input
                 type="file"
                 name="image"
-                src={image_path}
-                // src={UTILS.assets_url+image}
-                className="upload-img"
+                src={image}
+                // className="upload-img"
+                className="dark upload-frame grey"
                 defaultValue={image}
               ></input>
-              <span>
+
+              {/* <span>
                 <p className="dark upload-frame grey">Upload Image</p>
-              </span>
+              </span> */}
             </div>
 
             <button
@@ -167,5 +194,3 @@ class Edit extends Component {
 }
 
 export default Edit;
-
-
