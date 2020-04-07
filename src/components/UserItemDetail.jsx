@@ -41,6 +41,12 @@ class UserItemDetail extends Component {
 
   // state = {};
   render() {
+
+    // how/where to display the changed image??
+    // src={UTILS.assets_url + image}
+    // const image_path = UTILS.assets_url + image;
+    // http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg
+
     return (
       <React.Fragment>
         <TopNav />
@@ -50,7 +56,9 @@ class UserItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  {/* //http://localhost:4001/1586211775556_download.jpg */}
+                  {/* 
+                  Trying to retrieve this data
+                  http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg */}
                   <img src={item.image} alt="item-img" />
                 </div>
 

@@ -4,11 +4,13 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import { Util } from "reactstrap";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {} };
+    this.state = { items: {}, isLoaded: false,
+   };
     // get handle on the DOM element
     this.myRef = React.createRef();
   }
@@ -24,7 +26,7 @@ class Edit extends Component {
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       // console.table(res.data);
-      this.setState({ items: res.data[0] });
+      this.setState({ items: res.data[0], isLoaded: true });
     });
   }
 
@@ -60,10 +62,14 @@ class Edit extends Component {
       condition,
       description,
     } = this.state.items;
-
-    // how to display the changed image??
-    const image_path = UTILS.assets_url + image;
+    const image_path = UTILS.assets_url + image
+    // how/where to display the changed image??
+    // src={UTILS.assets_url + image}
+    // const image_path = UTILS.assets_url + image;
+    // http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg
     
+    console.log("hello ", this.state.isLoaded);
+
     return (
       <React.Fragment>
         <TopNav />
@@ -135,6 +141,7 @@ class Edit extends Component {
                 type="file"
                 name="image"
                 src={image_path}
+                // src={UTILS.assets_url+image}
                 className="upload-img"
                 defaultValue={image}
               ></input>
