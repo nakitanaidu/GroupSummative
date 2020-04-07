@@ -8,7 +8,7 @@ import NavBar from "./NavBar";
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {}, isLoaded: false, };
+    this.state = { items: {} };
     // get handle on the DOM element
     this.myRef = React.createRef();
   }
@@ -24,7 +24,7 @@ class Edit extends Component {
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       // console.table(res.data);
-      this.setState({ items: res.data[0], isLoaded: true });
+      this.setState({ items: res.data[0] });
     });
   }
 
@@ -37,7 +37,7 @@ class Edit extends Component {
     var settings = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    
+
     Axios.put(`${UTILS.update_item}/${this.props.id}`, formData, settings).then(
       (res) => {
         console.log(res);
@@ -61,8 +61,9 @@ class Edit extends Component {
       description,
     } = this.state.items;
 
- const image_path = UTILS.assets_url + image;
-
+    // how to display the changed image??
+    const image_path = UTILS.assets_url + image;
+    
     return (
       <React.Fragment>
         <TopNav />
@@ -127,18 +128,21 @@ class Edit extends Component {
                 Men
               </option>
             </select>
+
             <div className="uploadimg-con">
+              {/* src??? */}
               <input
                 type="file"
                 name="image"
+                src={image_path}
                 className="upload-img"
                 defaultValue={image}
-                onChange={this.uploadToExpress}
               ></input>
               <span>
                 <p className="dark upload-frame grey">Upload Image</p>
               </span>
             </div>
+
             <button
               type="submit"
               className="btn btn-primary btn-wide"
@@ -156,3 +160,5 @@ class Edit extends Component {
 }
 
 export default Edit;
+
+

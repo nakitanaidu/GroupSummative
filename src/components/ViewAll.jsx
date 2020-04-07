@@ -28,6 +28,7 @@ export default class ViewAll extends Component {
   }
 
   render() {
+   
     return (
       <React.Fragment>
         <TopNav />
