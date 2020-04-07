@@ -8,7 +8,7 @@ import NavBar from "./NavBar";
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {} };
+    this.state = { items: {}, isLoaded: false, };
     // get handle on the DOM element
     this.myRef = React.createRef();
   }
@@ -24,7 +24,7 @@ class Edit extends Component {
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       // console.table(res.data);
-      this.setState({ items: res.data[0] });
+      this.setState({ items: res.data[0], isLoaded: true });
     });
   }
 
@@ -60,6 +60,9 @@ class Edit extends Component {
       condition,
       description,
     } = this.state.items;
+
+ const image_path = UTILS.assets_url + image;
+
     return (
       <React.Fragment>
         <TopNav />
@@ -130,6 +133,7 @@ class Edit extends Component {
                 name="image"
                 className="upload-img"
                 defaultValue={image}
+                onChange={this.uploadToExpress}
               ></input>
               <span>
                 <p className="dark upload-frame grey">Upload Image</p>
