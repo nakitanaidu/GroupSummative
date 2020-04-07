@@ -50,6 +50,8 @@ class UserItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
+                  {/* //http://localhost:4001/1586211775556_download.jpg */}
+                  
                   <img src={item.image} alt="item-img" />
                 </div>
 

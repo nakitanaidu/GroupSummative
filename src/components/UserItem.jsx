@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
+import * as UTILS from "../utils";
+import Axios from "axios";
 // import TopNav from "./TopNav";
 // import NavBar from "./NavBar";
 
@@ -16,7 +18,7 @@ export default class UserItem extends Component {
         <div className="item-con">
           <div className="img-con">
             <img
-              src={this.props.image}
+              src= {this.props.image}
               alt="item-img"
               onClick={this.usersProductDetail}
             />

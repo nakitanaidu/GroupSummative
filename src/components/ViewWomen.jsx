@@ -40,7 +40,7 @@ export default class ViewItems extends Component {
                 <DisplayItems
                   key={i}
                   womens_category={items.womens_category}
-                  mens_category={items.mens_category}
+                  // mens_category={items.mens_category}
                   image={items.image}
                   title={items.title}
                   price={items.price}

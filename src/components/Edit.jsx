@@ -20,6 +20,7 @@ class Edit extends Component {
     navigate(`/edit-details/${temp}`);
   };
 
+
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       // console.table(res.data);
@@ -36,7 +37,7 @@ class Edit extends Component {
     var settings = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-
+    
     Axios.put(`${UTILS.update_item}/${this.props.id}`, formData, settings).then(
       (res) => {
         console.log(res);
@@ -45,6 +46,7 @@ class Edit extends Component {
         console.log(`Error updating ${this.props.id}`);
       }
     );
+
   };
 
   render() {
@@ -127,7 +129,6 @@ class Edit extends Component {
                 type="file"
                 name="image"
                 className="upload-img"
-                name="image"
                 defaultValue={image}
               ></input>
               <span>
