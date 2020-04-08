@@ -6,7 +6,7 @@ import { navigate } from "@reach/router";
 class Home extends Component {
 
   gotologin = (e) => {
-    navigate(`/login`);
+    navigate(`/categories`);
   };
 
   gotosignup = (e) => {

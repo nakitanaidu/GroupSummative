@@ -21,7 +21,6 @@ import "./css/userprofile.css";
 import "./css/delete.css";
 import UserProfile from "./components/UsersProfile";
 import EditProfile from "./components/EditProfile";
-import Login from "./components/Login"
 import SignUpForm from './components/SignUpForm'
 import DisplayItems from "./components/DisplayItems";
 import Add from "./components/Add"
@@ -45,7 +44,6 @@ class App extends Component {
           <UserProfile path="/profile" />
           <EditProfile path="/edit-profile" />
           <SignUpForm path="/signup" />
-          <Login path="/login" />
           <ViewAll path="/user-items" />
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
