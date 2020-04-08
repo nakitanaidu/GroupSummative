@@ -12,16 +12,26 @@ import "./css/cart.css";
 import "./css/checkout.css";
 
 import Categories from "./components/Categories";
-import UsersProfile from "./components/UsersProfile";
 import Home from "./components/Home";
 import ViewAll from "./components/ViewAll";
 import ViewWomen from "./components/ViewWomen";
 import ViewMen from "./components/ViewMen.jsx";
 import ItemDetail from "./components/ItemDetail";
-import Add from "./components/Add";
+import "./css/userprofile.css";
+import "./css/delete.css";
+import UserProfile from "./components/UsersProfile";
+import EditProfile from "./components/EditProfile";
+import SignUpForm from './components/SignUpForm'
+import DisplayItems from "./components/DisplayItems";
+import Add from "./components/Add"
+import Edit from "./components/Edit"
+import "./css/inputs.css";
+import "./css/cart.css";
+import "./css/checkout.css";
 import Cart from "./components/Cart";
 import UserItemDetail from "./components/UserItemDetail";
-import Edit from "./components/Edit";
+
+
 
 // import CheckOut from "./components/CheckOut";
 
@@ -31,14 +41,17 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <Categories path="/categories" />
-          <UsersProfile path="/profile" />
+          <UserProfile path="/profile" />
+          <EditProfile path="/edit-profile" />
+          <SignUpForm path="/signup" />
           <ViewAll path="/user-items" />
           <ViewWomen path="/view-women" />
           <ViewMen path="/view-men" />
+          <DisplayItems path="/display-details/:id" />
           <ItemDetail path="/product-details/:id" />
           <UserItemDetail path="/user-product-details/:id" />
           <Edit path="/edit-details/:id" />
-          <Home path="/login-signup" />
+          <Home path="/" />
           <Add path="/add-user-item" />
           <Cart path="/cart" />
         </Router>

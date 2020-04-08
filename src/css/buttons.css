@@ -20,6 +20,11 @@
   width: 100%;
 }
 
+.btn-lesswide{
+  margin: 16px auto;
+  width: 60%;
+}
+
 .btn-narrow {
   width: 47%;
   margin: 16px 0px;
