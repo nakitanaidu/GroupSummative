@@ -24,7 +24,6 @@ class Cart extends Component {
 
               <div className="detail-delete">
                 <p className="grey">Size:</p>
-                <p className="grey">Con: </p>
                 <img src={trash} alt="trash-icon" />
               </div>
             </div>

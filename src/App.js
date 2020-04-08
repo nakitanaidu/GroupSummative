@@ -6,6 +6,10 @@ import "./css/buttons.css";
 import "./css/navigation.css";
 import "./css/itemsdisplay.css";
 import "./css/itemdetail.css";
+import "./css/userprofile.css";
+import "./css/inputs.css";
+import "./css/cart.css";
+import "./css/checkout.css";
 
 import Categories from "./components/Categories";
 import Home from "./components/Home";

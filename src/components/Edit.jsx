@@ -4,11 +4,12 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import { Util } from "reactstrap";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {} };
+    this.state = { items: {}, isLoaded: false };
     // get handle on the DOM element
     this.myRef = React.createRef();
   }
@@ -20,10 +21,27 @@ class Edit extends Component {
     navigate(`/edit-details/${temp}`);
   };
 
+  checkForURL = (s = "") => {
+    console.log("s = ", s);
+    if (s.startsWith("http")) {
+      return true;
+    }
+
+    if (s.startsWith("httsp")) {
+      return true;
+    }
+
+    if (s.startsWith("//")) {
+      return true;
+    }
+
+    return false;
+  };
+
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       // console.table(res.data);
-      this.setState({ items: res.data[0] });
+      this.setState({ items: res.data[0], isLoaded: true });
     });
   }
 
@@ -32,6 +50,10 @@ class Edit extends Component {
     e.preventDefault();
     // grab reference to the form data
     var formData = new FormData(this.myRef.current);
+    //lets see what we have in the form
+    for (var p of formData.entries()) {
+      console.log(p);
+    }
 
     var settings = {
       headers: { "Content-Type": "multipart/form-data" },
@@ -48,7 +70,7 @@ class Edit extends Component {
   };
 
   render() {
-    const {
+    let {
       womens_category,
       mens_category,
       image,
@@ -58,6 +80,14 @@ class Edit extends Component {
       condition,
       description,
     } = this.state.items;
+
+    // only append server url to images that are not external
+    if (typeof image === "string" && this.checkForURL(image) === false) {
+      image = UTILS.images_folder + image;
+    }
+
+    console.log("hello ", this.state.isLoaded);
+
     return (
       <React.Fragment>
         <TopNav />
@@ -122,18 +152,31 @@ class Edit extends Component {
                 Men
               </option>
             </select>
+
             <div className="uploadimg-con">
+              <figure>
+                <img
+                  src={image}
+                  width="100px"
+                  height="100px"
+                  alt="current choice"
+                />
+                {/* <figcaption>Name: {image}</figcaption> */}
+              </figure>
               <input
                 type="file"
                 name="image"
-                className="upload-img"
-                name="image"
+                src={image}
+                // className="upload-img"
+                className="dark upload-frame grey"
                 defaultValue={image}
               ></input>
-              <span>
+
+              {/* <span>
                 <p className="dark upload-frame grey">Upload Image</p>
-              </span>
+              </span> */}
             </div>
+
             <button
               type="submit"
               className="btn btn-primary btn-wide"
