@@ -11,9 +11,25 @@ export default class UserItem extends Component {
     super(props)
   
     this.state = {
-       image:''
+       items:[]
     }
   }
+
+  // refreshData = () => {
+  //   Axios.get(`${UTILS.update_item}`).then(
+  //   (res) => {
+  //   this.setState({ cars: res.data });
+  //   },
+  //   (error) => {
+  //   console.log("error = ", error);
+  //   }
+  //   );
+  //   };
+    
+  //   //we getting info from json through server
+  //   componentDidMount() {
+  //   this.refreshData();
+  //   }
   
 
   usersProductDetail = (e) => {
@@ -46,3 +62,5 @@ export default class UserItem extends Component {
     );
   }
 }
+
+
