@@ -51,6 +51,46 @@ class UserItemDetail extends Component {
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
+          {/* props not dispalying */}
+          {this.state.items.map((item, i) => {
+            return (
+              <React.Fragment key={i}>
+                <div className="detail-img-con">
+                  {/* 
+                  Trying to retrieve this data
+                  http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg */}
+                  <img src={item.image} alt="item-img" />
+                </div>
+
+                <h2 className="dark">{item.title}</h2>
+
+                <div className="price-size-con">
+                  <h3 className="green">Price: {item.price}</h3>
+                  <h3 className="green">Size: {item.size}</h3>
+                  <h3 className="green">Con: {item.condition}</h3>
+                </div>
+
+                <p className="dark">{item.description}</p>
+                <div className="seller-seemore">
+                  <p className="grey">Seller: </p>
+                  <p>
+                    <a href="REPLACE THIS LINK" className="grey">
+                      See more here
+              </a>
+                  </p>
+                </div>
+
+                <div className="edit-delete">
+                  <button className="btn btn-narrow btn-secondary" _id={item._id}
+                    onClick={this.removeProduct}>Delete</button>
+                  <button
+                    className="btn btn-narrow  btn-primary"
+                    onClick={this.gotoEdit}>Edit</button>
+                </div>
+              </React.Fragment>
+            );
+          })}
+
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
             <input type="textarea" className="grey textarea-input"></input>
