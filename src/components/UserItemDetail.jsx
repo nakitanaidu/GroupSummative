@@ -6,42 +6,39 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 
 class UserItemDetail extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
     };
   }
 
-  gotoEdit = e => {
+  gotoEdit = (e) => {
     let temp = this.props.id;
     console.log(this.props.id);
     navigate(`/edit-details/${temp}`);
   };
 
   componentDidMount() {
-    Axios.get(`${UTILS.show_items}/${this.props.id}`).then(res => {
+    Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       console.table(res.data);
       this.setState({
-        items: res.data
+        items: res.data,
       });
     });
   }
 
-  removeProduct = evt => {
+  removeProduct = (evt) => {
     // var index = evt.target.getAttribute("data-uuid");
     console.table(this.state.items);
-    Axios.delete(`${UTILS.show_items}/${this.props.id}`).then(res => {
+    Axios.delete(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       console.log(res.data);
+      navigate(`/user-items`);
     });
   };
 
-
-
   // state = {};
   render() {
-
     // how/where to display the changed image??
     // src={UTILS.assets_url + image}
     // const image_path = UTILS.assets_url + image;
@@ -76,16 +73,24 @@ class UserItemDetail extends Component {
                   <p>
                     <a href="REPLACE THIS LINK" className="grey">
                       See more here
-              </a>
+                    </a>
                   </p>
                 </div>
 
                 <div className="edit-delete">
-                  <button className="btn btn-narrow btn-secondary" _id={item._id}
-                    onClick={this.removeProduct}>Delete</button>
+                  <button
+                    className="btn btn-narrow btn-secondary"
+                    _id={item._id}
+                    onClick={this.removeProduct}
+                  >
+                    Delete
+                  </button>
                   <button
                     className="btn btn-narrow  btn-primary"
-                    onClick={this.gotoEdit}>Edit</button>
+                    onClick={this.gotoEdit}
+                  >
+                    Edit
+                  </button>
                 </div>
               </React.Fragment>
             );

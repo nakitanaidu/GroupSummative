@@ -4,7 +4,6 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import { Util } from "reactstrap";
 
 class Edit extends Component {
   constructor(props) {
@@ -12,6 +11,7 @@ class Edit extends Component {
     this.state = { items: {}, isLoaded: false };
     // get handle on the DOM element
     this.myRef = React.createRef();
+    this.onCategoriesChange = this.onCategoriesChange.bind(this);
   }
 
   gotoProducts = (e) => {
@@ -134,20 +134,24 @@ class Edit extends Component {
               name="description"
               defaultValue={description}
             ></input>
-            <select className="category-options">
+            <select
+              className="category-options"
+              onChange={this.onCategoryChange}
+            >
               <option
-                value="women"
                 className="option-style"
                 name="womens_category"
                 defaultValue={womens_category}
+                value="women"
+                name="women"
               >
                 Women
               </option>
               <option
+                defaultValue={mens_category}
                 value="men"
                 className="option-style"
-                name="mens_category"
-                defaultValue={mens_category}
+                name="men"
               >
                 Men
               </option>
