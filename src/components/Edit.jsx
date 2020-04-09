@@ -18,7 +18,7 @@ class Edit extends Component {
     let temp = this.props.id;
     console.log(this.props.id);
 
-    navigate(`/edit-details/${temp}`);
+    navigate(`/product-details/${temp}`);
   };
 
   checkForURL = (s = "") => {
@@ -180,7 +180,7 @@ class Edit extends Component {
             <button
               type="submit"
               className="btn btn-primary btn-wide"
-              // onClick={this.gotoProducts}
+              onClick={this.gotoProducts}
             >
               Update Item
             </button>
