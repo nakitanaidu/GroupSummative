@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import replaceThisWithUserPhoto from "./images/background/women-item-02.jpg";
+import replaceThisWithUserPhoto from "../components/images/background/compressed/women_item_02.jpg";
 
 class UsersProfile extends Component {
   constructor() {
