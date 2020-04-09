@@ -31,7 +31,7 @@ class ItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  <img src={item.image} alt="item-img" />
+                  <img src={`${UTILS.images_folder}` + item.image} alt="item-img" />
                 </div>
 
                 <h2 className="dark">{item.title}</h2>
