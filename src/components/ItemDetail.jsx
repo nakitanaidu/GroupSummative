@@ -14,12 +14,22 @@ class ItemDetail extends Component {
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-      console.table(res.data);
+      console.table(res.data[0]["image"]);
       this.setState({
         items: res.data,
       });
     });
   }
+
+  updateImagePath = (p) => {
+    if (p.startsWith("http")) {
+      // we have an absolute path, don't touch it
+      return p;
+    } else {
+      // we have a path that relates to our server, pre-pend it
+      return UTILS.images_folder + p;
+    }
+  };
 
   render() {
     return (
@@ -31,7 +41,7 @@ class ItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  <img src={item.image} alt="item-img" />
+                  <img src={this.updateImagePath(item.image)} alt="item-img" />
                 </div>
 
                 <h2 className="dark">{item.title}</h2>
