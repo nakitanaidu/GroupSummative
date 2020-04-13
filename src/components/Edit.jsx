@@ -10,13 +10,15 @@ import CategorySelector from "./CategorySelector";
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {}, isLoaded: false };
+    this.state = { items: {}, isLoaded: false};
     // get handle on the DOM element
     this.myRef = React.createRef();
   }
 
- 
-  
+  onCategoryUpdated(event) {
+    this.setState({items: event.target.value});
+  }
+
   gotoProducts = (e) => {
     let temp = this.props.id;
     console.log(this.props.id);
@@ -72,8 +74,8 @@ class Edit extends Component {
 
   render() {
     let {
-      womens_category,
-      mens_category,
+      // womens_category,
+      // mens_category,
       image,
       title,
       price,
@@ -133,28 +135,27 @@ class Edit extends Component {
               name="description"
               defaultValue={description}
             ></input>
-            <select
-              className="category-options"
-              onChange={this.onCategoryUpdated}
-            >
+            
+            <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/>
+            {/* <select className="category-options" value={this.state.category} onChange={this.handleChange}>
               <option
-                className="option-style"
-                name="womens_category"
                 defaultValue={womens_category}
-                value="women"
-                name="women"
+                name="womens_category"
+                className="option-style"
+                // onChange={this.onWomenClicked}
               >
-                Women
+                Women's clothing
               </option>
+
               <option
                 defaultValue={mens_category}
-                value="men"
+                name="mens_category"
                 className="option-style"
-                name="men"
+                // onChange={this.onMenClicked}
               >
-                Men
+                Men's clothing
               </option>
-            </select>
+            </select> */}
 
             <div className="uploadimg-con">
               <figure>

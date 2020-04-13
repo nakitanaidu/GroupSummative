@@ -6,13 +6,18 @@ export default class CategorySelector extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-          items: [], selected_id:null
-        };
-        this.items_id=null
+        this.state = {category: 'womens_category'}
+        // get handle on the DOM element
+        this.myRef = React.createRef();
+        this.onCategoryUpdate = this.onCategoryUpdate.bind(this);
+      }
+    
+      onCategoryUpdate(event) {
+        this.setState({category: event.target.value});
       }
 
-      componentDidMount() {
+//
+    componentDidMount() {
         Axios.get(UTILS.show_items).then(
           (res) => {
             console.table(res.data);
@@ -25,28 +30,35 @@ export default class CategorySelector extends Component {
           }
         );
       }
-    
+
       render() {
+        let {
+            womens_category,
+            mens_category
+          } = this.state.category;
         return (
           <React.Fragment>
-            <select className="category-options" onChange={this.onCategoryUpdated}>
-            <option value="">Select Category:</option>
-                {this.state.items.map((category, i)=>{
-                    let menClothing = `${category.mens_categories}`
-                    let womenClothing = `${category.womens_category}`
-                return(
-                    <option key={i} value={category.id}>
-                        {menClothing},
-                        {womenClothing}  
-                    </option>
-                )
-                })}
-             
+            <select className="category-options" value={this.state.category} onChange={this.onCategoryUpdate}>
+              <option
+                defaultValue={womens_category}
+                name="womens_category"
+                className="option-style"
+                // onChange={this.onWomenClicked}
+              >
+                Women's clothing
+              </option>
+
+              <option
+                defaultValue={mens_category}
+                name="mens_category"
+                className="option-style"
+                // onChange={this.onMenClicked}
+              >
+                Men's clothing
+              </option>
             </select>
-            {/* <p>{this.state.value}</p> */}
           </React.Fragment>
         );
       }
     }
-    
-   
+

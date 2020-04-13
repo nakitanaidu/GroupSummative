@@ -13,10 +13,6 @@ class Add extends Component {
     this.state = { item_id: 0 };
   }
 
-  onCategoryUpdated = e => {
-    //update the hidden field in our form
-    this.setState({ item_id: e.target.value });
-  };
 
   addProduct = (e) => {
     e.preventDefault();
@@ -108,9 +104,8 @@ class Add extends Component {
               name="description"
               className="textarea-input"
             ></input>
-            <CategorySelector onCategoryUpdated={this.onCategoryUpdated} />
 
-            {/* <select className="category-options">
+            <select className="category-options">
               <option
                 value="women"
                 name="women"
@@ -127,7 +122,8 @@ class Add extends Component {
               >
                 Men
               </option>
-            </select> */}
+            </select>
+
             <input id="id" type="hidden" name="id" value={this.state.id} />
 
             <div className="uploadimg-con">
