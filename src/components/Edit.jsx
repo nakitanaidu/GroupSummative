@@ -133,25 +133,28 @@ class Edit extends Component {
               name="description"
               defaultValue={description}
             ></input>
-            
-            <select className="category-options">
-                    <option
-                    value="women"
-                    name="women"
-                    className="option-style"
-                    onChange={this.onWomenClicked}
-                    >
-                    Women
-                    </option>
-                    <option
-                    value="men"
-                    name="men"
-                    className="option-style"
-                    onChange={this.onMenClicked}
-                    >
-                    Men
-                    </option>
-                </select>
+            <select
+              className="category-options"
+              onChange={this.onCategoryUpdated}
+            >
+              <option
+                className="option-style"
+                name="womens_category"
+                defaultValue={womens_category}
+                value="women"
+                name="women"
+              >
+                Women
+              </option>
+              <option
+                defaultValue={mens_category}
+                value="men"
+                className="option-style"
+                name="men"
+              >
+                Men
+              </option>
+            </select>
 
             <div className="uploadimg-con">
               <figure>

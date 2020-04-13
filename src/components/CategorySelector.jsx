@@ -5,65 +5,48 @@ import * as UTILS from "../utils";
 export default class CategorySelector extends Component {
 
     constructor(props) {
-        super(props)
-    
+        super(props);
         this.state = {
-             
-        }
-    }
-    
-    onWomenClicked = (e) => {
-        e.preventDefault();
-        var womens_category = e.target.elements("women");
-        var formData = new FormData(this.formRef.current);
-        Axios.post(UTILS.show_women, formData, womens_category).then((res) => {
-        console.log(res);
-         });
-    };
-         
-        onMenClicked = (e) => {
-        e.preventDefault();
-        var mens_category = e.target.elements("men");
-        var formData = new FormData(this);
-        Axios.post(UTILS.show_men, formData, mens_category).then((res) => {
-        console.log(res);
-         });
-    }
+          items: [], selected_id:null
+        };
+        this.items_id=null
+      }
 
-    render() {
+      componentDidMount() {
+        Axios.get(UTILS.show_items).then(
+          (res) => {
+            console.table(res.data);
+            this.setState({
+              items: res.data,
+            });
+          },
+          (error) => {
+            console.log("error = ", error);
+          }
+        );
+      }
+    
+      render() {
         return (
-           <React.Fragment>
-                <select className="category-options">
-                    <option
-                    value="women"
-                    name="women"
-                    className="option-style"
-                    onChange={this.onWomenClicked}
-                    >
-                    Women
+          <React.Fragment>
+            <select className="category-options" onChange={this.onCategoryUpdated}>
+            <option value="">Select Category:</option>
+                {this.state.items.map((category, i)=>{
+                    let menClothing = `${category.mens_categories}`
+                    let womenClothing = `${category.womens_category}`
+                return(
+                    <option key={i} value={category.id}>
+                        {menClothing},
+                        {womenClothing}  
                     </option>
-                    <option
-                    value="men"
-                    name="men"
-                    className="option-style"
-                    onChange={this.onMenClicked}
-                    >
-                    Men
-                    </option>
-                </select>
-           </React.Fragment>
-        )
+                )
+                })}
+             
+            </select>
+            {/* <p>{this.state.value}</p> */}
+          </React.Fragment>
+        );
+      }
     }
-}
-
-
-
-
-
-
-
     
-
-
-
-
+   

@@ -37,6 +37,7 @@ class UserItemDetail extends Component {
     console.table(this.state.items);
     Axios.delete(`${UTILS.show_items}/${this.props.id}`).then((res) => {
       console.log(res.data);
+      navigate(`/user-items`);
     });
   };
 
@@ -76,16 +77,24 @@ class UserItemDetail extends Component {
                   <p>
                     <a href="REPLACE THIS LINK" className="grey">
                       See more here
-              </a>
+                    </a>
                   </p>
                 </div>
 
                 <div className="edit-delete">
-                  <button className="btn btn-narrow btn-secondary" _id={item._id}
-                    onClick={this.removeProduct}>Delete</button>
+                  <button
+                    className="btn btn-narrow btn-secondary"
+                    _id={item._id}
+                    onClick={this.removeProduct}
+                  >
+                    Delete
+                  </button>
                   <button
                     className="btn btn-narrow  btn-primary"
-                    onClick={this.gotoEdit}>Edit</button>
+                    onClick={this.gotoEdit}
+                  >
+                    Edit
+                  </button>
                 </div>
               </React.Fragment>
             );

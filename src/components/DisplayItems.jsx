@@ -24,7 +24,7 @@ class DisplayItems extends Component {
             />
           </div>
           <p className="item-title">{this.props.title}</p>
-          <p className="item-price red">{this.props.price}</p>
+          <p className="item-price red">{this.props.price} $</p>
         </div>
       </React.Fragment>
     );

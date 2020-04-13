@@ -4,13 +4,19 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import CategorySelector from "./CategorySelector";
 
 class Add extends Component {
   constructor(props) {
     super(props);
     this.formRef = React.createRef();
-    this.state = { id: Date.now() };
+    this.state = { item_id: 0 };
   }
+
+  onCategoryUpdated = e => {
+    //update the hidden field in our form
+    this.setState({ item_id: e.target.value });
+  };
 
   addProduct = (e) => {
     e.preventDefault();
@@ -34,6 +40,18 @@ class Add extends Component {
         console.log(err);
       });
   };
+
+
+  // uploadToExpress = (e) => {
+  //   e.preventDefault();
+  //   // grab reference to the form data
+  //   var formData = new FormData(this.formRef.current);
+  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
+  //   console.log(">>>+ FORMDATA ", formData);
+  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
@@ -90,23 +108,35 @@ class Add extends Component {
               name="description"
               className="textarea-input"
             ></input>
+            <CategorySelector onCategoryUpdated={this.onCategoryUpdated} />
 
-            <select className="category-options">
+            {/* <select className="category-options">
               <option
                 value="women"
-                name="womens_category"
+                name="women"
                 className="option-style"
+                onChange={this.onWomenClicked}
               >
                 Women
               </option>
-              <option value="men" name="mens_category" className="option-style">
+              <option
+                value="men"
+                name="men"
+                className="option-style"
+                onChange={this.onMenClicked}
+              >
                 Men
               </option>
-            </select>
+            </select> */}
             <input id="id" type="hidden" name="id" value={this.state.id} />
 
             <div className="uploadimg-con">
-              <input type="file" name="image" className="upload-img"></input>
+              <input
+                type="file"
+                name="image"
+                onChange={this.uploadToExpress}
+                className="upload-img"
+              ></input>
               <span>
                 <p className="dark upload-frame grey">Upload Image</p>
               </span>
