@@ -4,6 +4,7 @@ import * as UTILS from "../utils";
 import DisplayItems from "./DisplayItems";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import Comments from "./Comments";
 
 export default class extends Component {
   constructor(props) {
@@ -13,7 +14,15 @@ export default class extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(){
+    this.getData()
+  }
+
+  commentAdded = (e) => {
+    this.getData();
+  };
+
+  getData() {
     Axios.get(UTILS.show_men).then(
       (res) => {
         console.table(res.data);
@@ -37,8 +46,9 @@ export default class extends Component {
             {console.log(this.state.items)}
             {this.state.items.map((items, i) => {
               return (
+                <div key={Date.now()}>
                 <DisplayItems
-                  key={i}
+                  // key={i}
                   // womens_category={items.womens_category}
                   mens_category={items.mens_category}
                   image={items.image}
@@ -48,7 +58,10 @@ export default class extends Component {
                   condition={items.condition}
                   description={items.description}
                   _id={items._id}
+                  commentAdded={this.commentAdded}
                 />
+                <Comments comment={items.comment}/>
+                </div>
               );
             })}
           </div>

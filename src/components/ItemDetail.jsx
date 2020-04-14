@@ -10,7 +10,24 @@ class ItemDetail extends Component {
     this.state = {
       items: [],
     };
+    this.formRef = React.createRef();
+    console.table(this.props);
   }
+
+  submitComment = (e) => {
+    var formData = new FormData(this.formRef.current);
+
+    Axios.post(UTILS.post_comment, formData).then(
+      (res) => {
+        console.log("force reload");
+        this.props.commentAdded();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
@@ -41,7 +58,7 @@ class ItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  <img src={`${UTILS.images_folder}`+ item.image} alt="item-img" />
+                  <img src={`${UTILS.images_folder}` + item.image} alt="item-img" />
                 </div>
 
                 <h2 className="dark">{item.title}</h2>
@@ -68,11 +85,13 @@ class ItemDetail extends Component {
 
           <button className="btn btn-wide btn-primary">Add to Cart</button>
 
+          {/* comment section */}
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <input type="textarea" className="grey textarea-input"></input>
-
-            <button className="btn btn-primary btn-narrow btn-right">
+            <form action="" ref={this.formRef}>
+              <input type="textarea" className="grey textarea-input"></input>
+            </form>
+            <button onClick={this.submitComment} className="btn btn-primary btn-narrow btn-right">
               Send
             </button>
 
