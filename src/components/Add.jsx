@@ -172,17 +172,16 @@ class Add extends Component {
   }
   };
 
-
-  uploadToExpress = (e) => {
-    e.preventDefault();
-    // grab reference to the form data
-    var formData = new FormData(this.formRef.current);
-    var settings = { headers: { "Content-Type": "multipart/form-data" } };
-    console.log(">>>+ FORMDATA ", formData);
-    Axios.post(UTILS.show_items, formData, settings).then((res) => {
-      console.log(res);
-    });
-  };
+  // uploadToExpress = (e) => {
+  //   e.preventDefault();
+  //   // grab reference to the form data
+  //   var formData = new FormData(this.formRef.current);
+  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
+  //   console.log(">>>+ FORMDATA ", formData);
+  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
@@ -252,26 +251,8 @@ class Add extends Component {
               value={this.state.Description}
               onChange={this.onChangeDescription}
             ></input>
-   <div style={{ fontSize: 12, color: "red" }}>{this.state.DescriptionError}</div>
-            <select className="category-options">
-              <option
-                value="women"
-                name="women"
-                className="option-style"
-                onChange={this.onWomenClicked}
-              >
-                Women
-              </option>
-              <option
-                value="men"
-                name="men"
-                className="option-style"
-                onChange={this.onMenClicked}
-              >
-                Men
-              </option>
-            </select>
 
+            <CategoryDropdown />
             <input id="id" type="hidden" name="id" value={this.state.id} />
 
             <div className="uploadimg-con">
@@ -297,3 +278,24 @@ class Add extends Component {
 }
 
 export default Add;
+
+// onMenClicked = (e) => {
+//   var formData = new FormData(this.formRef.current);
+//   var mens_category = { mens_category: "men" };
+//   Axios.post(UTILS.show_items, formData, mens_category).then((res) => {
+//     console.log(res.data);
+//   });
+// };
+
+// onChangeCategory = (e) => {
+//   e.preventDefault();
+//   var formData = new FormData(this.formRef.current);
+//   var women = e.target.elements["women"].value;
+//   var men = e.target.elements["men"].value;
+//   Axios.post(UTILS.show_items, formData, {
+//     womens_category: women,
+//     mens_category: men,
+//   }).then((res) => {
+//     console.log(res);
+//   });
+// };
