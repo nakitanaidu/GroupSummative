@@ -6,7 +6,7 @@ export default class CategorySelector extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {category: 'womens_category'}
+        this.state = {category: [] }
         // get handle on the DOM element
         this.myRef = React.createRef();
         this.onCategoryUpdate = this.onCategoryUpdate.bind(this);
@@ -40,8 +40,10 @@ export default class CategorySelector extends Component {
           <React.Fragment>
             <select className="category-options" name={this.state.category} value={this.state.category} onChange={this.onCategoryUpdate}>
               <option
-                defaultValue={womens_category}
-                name="womens_category"
+                // defaultValue={womens_category}
+                value={womens_category}
+                // name="womens_category"
+                name={womens_category}
                 className="option-style"
                 // onChange={this.onWomenClicked}
               >
@@ -49,8 +51,10 @@ export default class CategorySelector extends Component {
               </option>
 
               <option
-                defaultValue={mens_category}
-                name="mens_category"
+                // defaultValue={mens_category}
+                value={mens_category}
+                // name="mens_category"
+                name={mens_category}
                 className="option-style"
                 // onChange={this.onMenClicked}
               >
