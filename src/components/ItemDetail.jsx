@@ -10,16 +10,43 @@ class ItemDetail extends Component {
     this.state = {
       items: [],
     };
+    // this.formRef = React.createRef();
+    // console.table(this.props);
   }
+
+  // submitComment = (e) => {
+  //   var formData = new FormData(this.formRef.current);
+
+  //   Axios.post(UTILS.post_comment, formData).then(
+  //     (res) => {
+  //       console.log("force reload");
+  //       this.props.commentAdded();
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // };
+
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-      console.table(res.data);
+      console.table(res.data[0]["image"]);
       this.setState({
         items: res.data,
       });
     });
   }
+
+  updateImagePath = (p) => {
+    if (p.startsWith("http")) {
+      // we have an absolute path, don't touch it
+      return p;
+    } else {
+      // we have a path that relates to our server, pre-pend it
+      return UTILS.images_folder + p;
+    }
+  };
 
   render() {
     return (
@@ -31,7 +58,7 @@ class ItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  <img src={item.image} alt="item-img" />
+                  <img src={`${UTILS.images_folder}` + item.image} alt="item-img" />
                 </div>
 
                 <h2 className="dark">{item.title}</h2>
@@ -58,11 +85,13 @@ class ItemDetail extends Component {
 
           <button className="btn btn-wide btn-primary">Add to Cart</button>
 
+          {/* comment section */}
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <input type="textarea" className="grey textarea-input"></input>
-
-            <button className="btn btn-primary btn-narrow btn-right">
+            {/* <form action="" ref={this.formRef}> */}
+              <input type="textarea" className="grey textarea-input"></input>
+            {/* </form> */}
+            <button  className="btn btn-primary btn-narrow btn-right">
               Send
             </button>
 

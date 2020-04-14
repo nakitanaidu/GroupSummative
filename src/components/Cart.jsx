@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import replaceThisWithPhoto from "./images/background/women-item-02.jpg";
+import replaceThisWithPhoto from "../components/images/background/compressed/women_item_02.jpg";
 import trash from "./images/trash-solid.svg";
 
 class Cart extends Component {
