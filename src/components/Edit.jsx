@@ -11,7 +11,6 @@ class Edit extends Component {
     this.state = { items: {}, isLoaded: false };
     // get handle on the DOM element
     this.myRef = React.createRef();
-    this.onCategoriesChange = this.onCategoriesChange.bind(this);
   }
 
   gotoProducts = (e) => {

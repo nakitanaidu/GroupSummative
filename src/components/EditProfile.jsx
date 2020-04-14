@@ -4,11 +4,7 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import logo from "./images/logo.png";
 
-
-
 class EditProfile extends Component {
-
-
   // Saving user Info to profile page
 
   constructor(props) {
@@ -23,14 +19,12 @@ class EditProfile extends Component {
   }
 
   goBack = (e) => {
-    navigate("/profile")
-   }
-   
-   
+    navigate("/profile");
+  };
+
   onChangeUser = (e) => {
     this.setState({ User: e.target.value });
     localStorage.setItem("user", e.target.value);
-    
   };
 
   onChangeEmail = (e) => {
@@ -70,8 +64,6 @@ class EditProfile extends Component {
     return (
       <React.Fragment>
         <TopNav />
-
-        <img src={logo} alt="logo" className="logo" />
         <div className="page">
           <h2 className="page-tile">Edit Profile</h2>
           <form onSubmit={this.onSubmit}>
@@ -107,8 +99,6 @@ class EditProfile extends Component {
               className="text-input"
             ></input>
 
-
-
             <div className="uploadimg-con">
               <input type="file" className="upload-img"></input>
               <span>
@@ -116,12 +106,14 @@ class EditProfile extends Component {
               </span>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-lesswide" onClick={this.goBack}>
-              Sign up
+            <button
+              type="submit"
+              className="btn btn-primary btn-lesswide"
+              onClick={this.goBack}
+            >
+              Update
             </button>
           </form>
-
-
         </div>
 
         <NavBar />

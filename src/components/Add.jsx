@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import CategoryDropdown from "./CategoryDropdown";
 
 class Add extends Component {
   constructor(props) {
@@ -32,36 +33,16 @@ class Add extends Component {
       });
   };
 
-  onWomenClicked = (e) => {
-    e.preventDefault();
-    var formData = new FormData(this.formRef.current);
-    var womens_category = formData.get("women").value;
-    Axios.post(UTILS.show_items, formData, womens_category).then((res) => {
-      this.setState({ womens_category });
-      console.log(res);
-    });
-  };
-
-  onMenClicked = (e) => {
-    e.preventDefault();
-    var formData = new FormData(this.formRef.current);
-    var mens_category = formData.get("men").value;
-    Axios.post(UTILS.show_items, formData, mens_category).then((res) => {
-      this.setState({ mens_category });
-      console.log(res);
-    });
-  };
-
-  uploadToExpress = (e) => {
-    e.preventDefault();
-    // grab reference to the form data
-    var formData = new FormData(this.formRef.current);
-    var settings = { headers: { "Content-Type": "multipart/form-data" } };
-    console.log(">>>+ FORMDATA ", formData);
-    Axios.post(UTILS.show_items, formData, settings).then((res) => {
-      console.log(res);
-    });
-  };
+  // uploadToExpress = (e) => {
+  //   e.preventDefault();
+  //   // grab reference to the form data
+  //   var formData = new FormData(this.formRef.current);
+  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
+  //   console.log(">>>+ FORMDATA ", formData);
+  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
@@ -119,24 +100,7 @@ class Add extends Component {
               className="textarea-input"
             ></input>
 
-            <select className="category-options">
-              <option
-                value="women"
-                name="women"
-                className="option-style"
-                onChange={this.onWomenClicked}
-              >
-                Women
-              </option>
-              <option
-                value="men"
-                name="men"
-                className="option-style"
-                onChange={this.onMenClicked}
-              >
-                Men
-              </option>
-            </select>
+            <CategoryDropdown />
             <input id="id" type="hidden" name="id" value={this.state.id} />
 
             <div className="uploadimg-con">
@@ -162,3 +126,24 @@ class Add extends Component {
 }
 
 export default Add;
+
+// onMenClicked = (e) => {
+//   var formData = new FormData(this.formRef.current);
+//   var mens_category = { mens_category: "men" };
+//   Axios.post(UTILS.show_items, formData, mens_category).then((res) => {
+//     console.log(res.data);
+//   });
+// };
+
+// onChangeCategory = (e) => {
+//   e.preventDefault();
+//   var formData = new FormData(this.formRef.current);
+//   var women = e.target.elements["women"].value;
+//   var men = e.target.elements["men"].value;
+//   Axios.post(UTILS.show_items, formData, {
+//     womens_category: women,
+//     mens_category: men,
+//   }).then((res) => {
+//     console.log(res);
+//   });
+// };

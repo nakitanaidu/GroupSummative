@@ -8,8 +8,8 @@
   border-radius: 10px;
 }
 
-.detail-img-con img {
-  max-width: 100%;
+.item-detail-img {
+  width: 100%;
   min-height: 100%;
   object-fit: cover;
 }
