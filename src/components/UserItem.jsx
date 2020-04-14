@@ -15,21 +15,21 @@ export default class UserItem extends Component {
     }
   }
 
-  // refreshData = () => {
-  //   Axios.get(`${UTILS.update_item}`).then(
-  //   (res) => {
-  //   this.setState({ cars: res.data });
-  //   },
-  //   (error) => {
-  //   console.log("error = ", error);
-  //   }
-  //   );
-  //   };
+  refreshData = () => {
+    Axios.get(`${UTILS.update_item}`).then(
+    (res) => {
+    this.setState({ cars: res.data });
+    },
+    (error) => {
+    console.log("error = ", error);
+    }
+    );
+    };
     
-  //   //we getting info from json through server
-  //   componentDidMount() {
-  //   this.refreshData();
-  //   }
+    //we getting info from json through server
+    componentDidMount() {
+    this.refreshData();
+    }
   
 
   usersProductDetail = (e) => {
@@ -44,13 +44,17 @@ export default class UserItem extends Component {
     // src={UTILS.assets_url + item.image}
     // const image_path = UTILS.assets_url + image;
     // http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg
+    console.log(this.props);
+ var image = this.props.image;
+ if (image !== undefined && !image.startsWith("http"))
+ image = `http://localhost:4001/assets/${image}`;
 
     return (
       <React.Fragment>
         <div className="item-con">
           <div className="img-con">
             <img
-              src={this.props.image}
+              src={image}
               alt="item-img"
               onClick={this.usersProductDetail}
             />

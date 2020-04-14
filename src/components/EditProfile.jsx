@@ -194,7 +194,7 @@ class EditProfile extends Component {
             </div>
 
             <button type="submit" className="btn btn-primary btn-lesswide">
-              Sign up
+              Update
             </button>
           </form>
 

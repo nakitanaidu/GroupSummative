@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-// import * as UTILS from "../utils";
-// import Axios from "axios";
-// import TopNav from "./TopNav";
-// import NavBar from "./NavBar";
+import * as UTILS from "../utils";
+import Axios from "axios";
+import TopNav from "./TopNav";
+import NavBar from "./NavBar";
 
 class DisplayItems extends Component {
   productDisplay = (e) => {
@@ -24,7 +24,7 @@ class DisplayItems extends Component {
             />
           </div>
           <p className="item-title">{this.props.title}</p>
-          <p className="item-price red">{this.props.price}</p>
+          <p className="item-price red">{this.props.price} $</p>
         </div>
       </React.Fragment>
     );
