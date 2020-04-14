@@ -10,23 +10,23 @@ class ItemDetail extends Component {
     this.state = {
       items: [],
     };
-    this.formRef = React.createRef();
-    console.table(this.props);
+    // this.formRef = React.createRef();
+    // console.table(this.props);
   }
 
-  submitComment = (e) => {
-    var formData = new FormData(this.formRef.current);
+  // submitComment = (e) => {
+  //   var formData = new FormData(this.formRef.current);
 
-    Axios.post(UTILS.post_comment, formData).then(
-      (res) => {
-        console.log("force reload");
-        this.props.commentAdded();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
+  //   Axios.post(UTILS.post_comment, formData).then(
+  //     (res) => {
+  //       console.log("force reload");
+  //       this.props.commentAdded();
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // };
 
 
   componentDidMount() {
@@ -78,10 +78,10 @@ class ItemDetail extends Component {
           {/* comment section */}
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <form action="" ref={this.formRef}>
+            {/* <form action="" ref={this.formRef}> */}
               <input type="textarea" className="grey textarea-input"></input>
-            </form>
-            <button onClick={this.submitComment} className="btn btn-primary btn-narrow btn-right">
+            {/* </form> */}
+            <button  className="btn btn-primary btn-narrow btn-right">
               Send
             </button>
 
