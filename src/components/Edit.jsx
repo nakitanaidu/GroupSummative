@@ -5,25 +5,20 @@ import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import { Util } from "reactstrap";
-import CategorySelector from "./CategorySelector";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
-    this.state = { items: {}, isLoaded: false};
+    this.state = { items: {}, isLoaded: false };
     // get handle on the DOM element
     this.myRef = React.createRef();
-  }
-
-  onCategoryUpdated(event) {
-    this.setState({items: event.target.value});
   }
 
   gotoProducts = (e) => {
     let temp = this.props.id;
     console.log(this.props.id);
 
-    navigate(`/user-product-details/${temp}`);
+    navigate(`/edit-details/${temp}`);
   };
 
   checkForURL = (s = "") => {
@@ -59,9 +54,11 @@ class Edit extends Component {
     for (var p of formData.entries()) {
       console.log(p);
     }
+
     var settings = {
       headers: { "Content-Type": "multipart/form-data" },
     };
+
     Axios.put(`${UTILS.update_item}/${this.props.id}`, formData, settings).then(
       (res) => {
         console.log(res);
@@ -74,8 +71,8 @@ class Edit extends Component {
 
   render() {
     let {
-      // womens_category,
-      // mens_category,
+      womens_category,
+      mens_category,
       image,
       title,
       price,
@@ -88,6 +85,8 @@ class Edit extends Component {
     if (typeof image === "string" && this.checkForURL(image) === false) {
       image = UTILS.images_folder + image;
     }
+
+    console.log("hello ", this.state.isLoaded);
 
     return (
       <React.Fragment>
@@ -135,26 +134,25 @@ class Edit extends Component {
               name="description"
               defaultValue={description}
             ></input>
-            
-            <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/>
-            {/* <select className="category-options" value={this.state.category} onChange={this.handleChange}>
+            <select className="category-options">
               <option
-                defaultValue={womens_category}
+                value="women"
+                className="option-style"
                 name="womens_category"
-                className="option-style"
-                // onChange={this.onWomenClicked}
+                defaultValue={womens_category}
               >
-                Women's clothing
+                Women
               </option>
+             
               <option
-                defaultValue={mens_category}
-                name="mens_category"
+                value="men"
                 className="option-style"
-                // onChange={this.onMenClicked}
+                name="mens_category"
+                defaultValue={mens_category}
               >
-                Men's clothing
+                Men
               </option>
-            </select> */}
+            </select>
 
             <div className="uploadimg-con">
               <figure>
@@ -183,7 +181,7 @@ class Edit extends Component {
             <button
               type="submit"
               className="btn btn-primary btn-wide"
-              onClick={this.gotoProducts}
+              // onClick={this.gotoProducts}
             >
               Update Item
             </button>
@@ -197,44 +195,3 @@ class Edit extends Component {
 }
 
 export default Edit;
-
-// class FlavorForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {value: 'coconut'};
-
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   handleChange(event) {
-//     this.setState({value: event.target.value});
-//   }
-
-//   handleSubmit(event) {
-//     alert('Your favorite flavor is: ' + this.state.value);
-//     event.preventDefault();
-//   }
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <label>
-//           Pick your favorite flavor:
-//           <select value={this.state.value} onChange={this.handleChange}>
-//             <option value="grapefruit">Grapefruit</option>
-//             <option value="lime">Lime</option>
-//             <option value="coconut">Coconut</option>
-//             <option value="mango">Mango</option>
-//           </select>
-//         </label>
-//         <input type="submit" value="Submit" />
-//       </form>
-//     );
-//   }
-// }
-
-// ReactDOM.render(
-//   <FlavorForm />,
-//   document.getElementById('root')
-// );

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import replaceThisWithUserPhoto from "../components/images/background/compressed/women_item_02.jpg";
+
 
 class UsersProfile extends Component {
   constructor() {
@@ -12,12 +12,14 @@ class UsersProfile extends Component {
     let u = window.localStorage.getItem("user") || "User name";
     let e = window.localStorage.getItem("email") || "Email";
     let p = window.localStorage.getItem("phone") || "Phone";
+    let f = window.localStorage.getItem("img") || "img";
 
     this.state = {
       data: "",
       user: u,
       email: e,
       phone: p,
+      img : f,
     };
   }
 
@@ -43,7 +45,7 @@ class UsersProfile extends Component {
 
           <div className="user-information">
             <div className="avatar">
-              <img src={replaceThisWithUserPhoto} alt="user" />
+              <img src={this.state.img} alt="user" />
             </div>
 
             <div className="user-detail">

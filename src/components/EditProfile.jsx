@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import * as UTILS from "../utils";
 import { navigate } from "@reach/router";
+import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import CategorySelector from "./CategorySelector";
 import logo from "./images/logo.png";
 
 const initialState = {
@@ -71,6 +74,12 @@ class EditProfile extends Component {
         : e.target.value
     });
   };
+
+  onChangeImg = (e) => {
+    this.setState({ Password: e.target.value });
+    localStorage.setItem("img", e.target.value);
+  };
+
 
 
   // Form info validation
@@ -142,7 +151,15 @@ class EditProfile extends Component {
         Phone: localStorage.getItem("phone"),
       });
     }
+
+    if (localStorage.getItem("img")) {
+      this.setState({
+        Phone: localStorage.getItem("img"),
+      });
+      
+    }
   }
+  
   render() {
     return (
       <React.Fragment>
@@ -186,8 +203,15 @@ class EditProfile extends Component {
           
 
 
-            <div className="uploadimg-con">
-              <input type="file" className="upload-img"></input>
+           
+             <div className="uploadimg-con">
+              <input
+                type="file"
+                name="image"
+                placeholder="image"
+                onChange={this.onChangeImg}
+                className="upload-img"
+              ></input>
               <span>
                 <p className="dark upload-frame grey">Upload Image</p>
               </span>
