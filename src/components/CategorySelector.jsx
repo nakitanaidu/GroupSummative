@@ -38,7 +38,7 @@ export default class CategorySelector extends Component {
           } = this.state.category;
         return (
           <React.Fragment>
-            <select className="category-options" value={this.state.category} onChange={this.onCategoryUpdate}>
+            <select className="category-options" name={this.state.category} value={this.state.category} onChange={this.onCategoryUpdate}>
               <option
                 defaultValue={womens_category}
                 name="womens_category"
