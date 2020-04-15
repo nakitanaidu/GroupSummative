@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import EditDropdown from "./dropdowns/EditDropdown";
 
 class Edit extends Component {
   constructor(props) {
@@ -133,28 +134,8 @@ class Edit extends Component {
               name="description"
               defaultValue={description}
             ></input>
-            <select
-              className="category-options"
-              onChange={this.onCategoryChange}
-            >
-              <option
-                className="option-style"
-                name="womens_category"
-                defaultValue={womens_category}
-                value="women"
-                name="women"
-              >
-                Women
-              </option>
-              <option
-                defaultValue={mens_category}
-                value="men"
-                className="option-style"
-                name="men"
-              >
-                Men
-              </option>
-            </select>
+
+            <EditDropdown />
 
             <div className="uploadimg-con">
               <figure>
@@ -183,7 +164,7 @@ class Edit extends Component {
             <button
               type="submit"
               className="btn btn-primary btn-wide"
-              // onClick={this.gotoProducts}
+              onClick={this.gotoProducts}
             >
               Update Item
             </button>
