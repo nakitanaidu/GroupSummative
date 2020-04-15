@@ -6,13 +6,12 @@ import Axios from "axios";
 // import NavBar from "./NavBar";
 
 export default class UserItem extends Component {
-
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
-       items:[]
-    }
+      items: [],
+    };
   }
 
   // refreshData = () => {
@@ -25,12 +24,11 @@ export default class UserItem extends Component {
   //   }
   //   );
   //   };
-    
+
   //   //we getting info from json through server
   //   componentDidMount() {
   //   this.refreshData();
   //   }
-  
 
   usersProductDetail = (e) => {
     let temp = this.props._id;
@@ -39,7 +37,6 @@ export default class UserItem extends Component {
   };
 
   render() {
-
     // how/where to display the changed image??
     // src={UTILS.assets_url + item.image}
     // const image_path = UTILS.assets_url + image;
@@ -66,5 +63,3 @@ export default class UserItem extends Component {
     );
   }
 }
-
-

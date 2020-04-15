@@ -6,6 +6,7 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import { Util } from "reactstrap";
 import CategorySelector from "./CategorySelector";
+import CategoryDropdown from "./CategoryDropdown";
 
 class Edit extends Component {
   constructor(props) {
@@ -15,9 +16,10 @@ class Edit extends Component {
     this.myRef = React.createRef();
   }
 
-  onCategoryUpdated(event) {
-    this.setState({items: event.target.value});
-  }
+  onCategoryChanged = (e) => {
+    console.log("men clicked");
+    this.setState({ name: "mens_category" });
+  };
 
   gotoProducts = (e) => {
     let temp = this.props.id;
@@ -136,26 +138,9 @@ class Edit extends Component {
               defaultValue={description}
             ></input>
             
-            <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/>
-            {/* <select className="category-options" value={this.state.category} onChange={this.handleChange}>
-              <option
-                defaultValue={womens_category}
-                name="womens_category"
-                className="option-style"
-                // onChange={this.onWomenClicked}
-              >
-                Women's clothing
-              </option>
-
-              <option
-                defaultValue={mens_category}
-                name="mens_category"
-                className="option-style"
-                // onChange={this.onMenClicked}
-              >
-                Men's clothing
-              </option>
-            </select> */}
+            <CategorySelector />
+            <input id="id" type="hidden" name="id" value={this.state.id} />
+           
 
             <div className="uploadimg-con">
               <figure>
@@ -198,44 +183,3 @@ class Edit extends Component {
 }
 
 export default Edit;
-
-// class FlavorForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {value: 'coconut'};
-
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   handleChange(event) {
-//     this.setState({value: event.target.value});
-//   }
-
-//   handleSubmit(event) {
-//     alert('Your favorite flavor is: ' + this.state.value);
-//     event.preventDefault();
-//   }
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <label>
-//           Pick your favorite flavor:
-//           <select value={this.state.value} onChange={this.handleChange}>
-//             <option value="grapefruit">Grapefruit</option>
-//             <option value="lime">Lime</option>
-//             <option value="coconut">Coconut</option>
-//             <option value="mango">Mango</option>
-//           </select>
-//         </label>
-//         <input type="submit" value="Submit" />
-//       </form>
-//     );
-//   }
-// }
-
-// ReactDOM.render(
-//   <FlavorForm />,
-//   document.getElementById('root')
-// );

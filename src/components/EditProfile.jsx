@@ -17,6 +17,8 @@ const initialState = {
 
 
 class EditProfile extends Component {
+// class EditProfile extends Component {
+//   // Saving user Info to profile page
 
   constructor(props) {
     super(props);
@@ -25,17 +27,13 @@ class EditProfile extends Component {
     this.state = initialState;
   }
 
- 
-   
+  goBack = (e) => {
+    navigate("/profile");
+  };
+
   onChangeUser = (e) => {
     this.setState({ User: e.target.value });
     localStorage.setItem("user", e.target.value);
-    const isCheckbox = e.target.type === "checkbox";
-    this.setState({
-      [e.target.name]: isCheckbox
-        ? e.target.checked
-        : e.target.value
-    });
   };
 
   onChangeEmail = (e) => {
@@ -147,8 +145,6 @@ class EditProfile extends Component {
     return (
       <React.Fragment>
         <TopNav />
-
-        <img src={logo} alt="logo" className="logo" />
         <div className="page">
           <h2 className="page-tile">Edit Profile</h2>
           <form onSubmit={this.onSubmit}>
@@ -182,9 +178,11 @@ class EditProfile extends Component {
               className="text-input"
               onChange={this.onChangePassword}
             ></input>
-             <div style={{ fontSize: 12, color: "red" }}>{this.state.PasswordError}</div>
-          
-
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              className="text-input"
+            ></input>
 
             <div className="uploadimg-con">
               <input type="file" className="upload-img"></input>
@@ -193,12 +191,14 @@ class EditProfile extends Component {
               </span>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-lesswide">
+            <button
+              type="submit"
+              className="btn btn-primary btn-lesswide"
+              onClick={this.goBack}
+            >
               Update
             </button>
           </form>
-
-
         </div>
 
         <NavBar />
