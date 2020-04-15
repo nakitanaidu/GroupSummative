@@ -5,6 +5,7 @@ import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import CategorySelector from "./CategorySelector";
+import CategoryDropdown from "./CategoryDropdown"
 
 
 const initialState = {
@@ -172,16 +173,18 @@ class Add extends Component {
   }
   };
 
-  // uploadToExpress = (e) => {
-  //   e.preventDefault();
-  //   // grab reference to the form data
-  //   var formData = new FormData(this.formRef.current);
-  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
-  //   console.log(">>>+ FORMDATA ", formData);
-  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
+
+ 
+  uploadToExpress = (e) => {
+    e.preventDefault();
+    // grab reference to the form data
+    var formData = new FormData(this.formRef.current);
+    var settings = { headers: { "Content-Type": "multipart/form-data" } };
+    console.log(">>>+ FORMDATA ", formData);
+    Axios.post(UTILS.show_items, formData, settings).then((res) => {
+      console.log(res);
+    });
+  };
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
