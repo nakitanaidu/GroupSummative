@@ -17,8 +17,6 @@ this.myRef = React.createRef();
 }
 
 
-
-
 onChangeTitle = (e) => {
   this.setState({ title: e.target.value });
   const isCheckbox = e.target.type === "checkbox";
@@ -260,7 +258,8 @@ return (
         <div style={{ fontSize: 12, color: "red" }}>{this.state.descriptionError}</div>
 
         <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/>
-        <select className="category-options" value={this.state.category} onChange={this.handleChange}>
+        {/* <CategorySelector /> */}
+        {/* <select className="category-options" value={this.state.category} onChange={this.handleChange}>
           <option
             defaultValue={womens_category}
             name="womens_category"
@@ -278,7 +277,7 @@ return (
           >
             Men's clothing
           </option>
-        </select>
+        </select> */}
 
         <div className="uploadimg-con">
           <figure>

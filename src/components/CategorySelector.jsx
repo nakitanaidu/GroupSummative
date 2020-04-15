@@ -12,21 +12,33 @@ export default class CategorySelector extends Component {
     };
   }
 
-  onCategoryChanged = (e) => {
+  onCategoryUpdate = (e) => {
     console.log("clicked");
     this.setState({ name: "mens_category" });
   };
 
+//
+componentDidMount() {
+    Axios.get(UTILS.show_items).then(
+      (res) => {
+        console.table(res.data);
+        this.setState({
+          items: res.data,
+        });
+      },
+      (error) => {
+        console.log("error = ", error);
+      }
+    );
+  }
+
   render() {
+    
     return (
       <React.Fragment>
-        <select
-          className="category-options"
-          defaultValue={this.state.value}
-          name={this.state.name}
-          onChange={this.onCategoryChanged}
-        >
-          <option className="option-style" value="Women's clothing">
+        <select className="category-options" name={this.state.name} defaultValue={'DEFAULT'} onChange={this.onCategoryUpdate}>
+        <option value="DEFAULT" disabled>Choose...</option>
+        <option className="option-style" value="Women's clothing">
             Women
           </option>
           <option className="option-style" value="Men's clothing">
@@ -37,4 +49,3 @@ export default class CategorySelector extends Component {
     );
   }
 }
-
