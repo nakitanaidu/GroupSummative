@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import * as UTILS from "../utils";
 import { navigate } from "@reach/router";
+import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import logo from "./images/logo.png";
+import CategorySelector from "./CategorySelector";
+import logo from "./images/logo.png"
+
 
 const initialState = {
   User: "",
@@ -17,8 +21,6 @@ const initialState = {
 
 
 class EditProfile extends Component {
-// class EditProfile extends Component {
-//   // Saving user Info to profile page
 
   constructor(props) {
     super(props);
@@ -26,10 +28,6 @@ class EditProfile extends Component {
     // init state - may be overwritten
     this.state = initialState;
   }
-
-  goBack = (e) => {
-    navigate("/profile");
-  };
 
   onChangeUser = (e) => {
     this.setState({ User: e.target.value });
@@ -69,7 +67,6 @@ class EditProfile extends Component {
         : e.target.value
     });
   };
-
 
   // Form info validation
 
@@ -118,7 +115,7 @@ class EditProfile extends Component {
       console.log(this.state);
       this.setState(initialState)
       navigate("/profile")
-      
+
     }
   };
 
@@ -141,11 +138,13 @@ class EditProfile extends Component {
       });
     }
   }
+
   render() {
     return (
       <React.Fragment>
         <TopNav />
         <div className="page">
+        <img src={logo} alt="logo" className="logo"/>
           <h2 className="page-tile">Edit Profile</h2>
           <form onSubmit={this.onSubmit}>
             <input
@@ -165,7 +164,7 @@ class EditProfile extends Component {
             ></input>
             <div style={{ fontSize: 12, color: "red" }}>{this.state.EmailError}</div>
             <input
-              type="text"
+              type="number"
               placeholder="Phone"
               className="text-input"
               value={this.state.Phone}
@@ -176,25 +175,14 @@ class EditProfile extends Component {
               type="password"
               placeholder="Password"
               className="text-input"
+              value={this.state.Password}
               onChange={this.onChangePassword}
             ></input>
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              className="text-input"
-            ></input>
-
-            <div className="uploadimg-con">
-              <input type="file" className="upload-img"></input>
-              <span>
-                <p className="dark upload-frame grey">Upload Image</p>
-              </span>
-            </div>
-
+            <div style={{ fontSize: 12, color: "red" }}>{this.state.PasswordError}</div>
+            
             <button
               type="submit"
               className="btn btn-primary btn-lesswide"
-              onClick={this.goBack}
             >
               Update
             </button>

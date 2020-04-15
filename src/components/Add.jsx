@@ -38,17 +38,6 @@ class Add extends Component {
       });
   };
 
-  // uploadToExpress = (e) => {
-  //   e.preventDefault();
-  //   // grab reference to the form data
-  //   var formData = new FormData(this.formRef.current);
-  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
-  //   console.log(">>>+ FORMDATA ", formData);
-  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-
   checkForURL = (s = "") => {
     console.log("s = ", s);
     if (s.startsWith("http")) {
@@ -131,24 +120,3 @@ class Add extends Component {
 }
 
 export default Add;
-
-// onMenClicked = (e) => {
-//   var formData = new FormData(this.formRef.current);
-//   var mens_category = { mens_category: "men" };
-//   Axios.post(UTILS.show_items, formData, mens_category).then((res) => {
-//     console.log(res.data);
-//   });
-// };
-
-// onChangeCategory = (e) => {
-//   e.preventDefault();
-//   var formData = new FormData(this.formRef.current);
-//   var women = e.target.elements["women"].value;
-//   var men = e.target.elements["men"].value;
-//   Axios.post(UTILS.show_items, formData, {
-//     womens_category: women,
-//     mens_category: men,
-//   }).then((res) => {
-//     console.log(res);
-//   });
-// };
