@@ -7,30 +7,126 @@ import NavBar from "./NavBar";
 import AddDropdown from "./dropdowns/AddDropdown";
 
 const initialState = {
-  Title: "",
-  Price: "",
-  Size: "",
-  Condition: "",
-  Description: "",
-  TitleError: "",
-  PriceError: "",
-  SizeError: "",
-  ConditionError: "",
-  DescriptionError: "",
+  title: "",
+ price: "",
+  size: "",
+  condition: "",
+ description: "",
+  titleError: "",
+  priceError: "",
+ sizeError: "",
+ conditionError: "",
+ descriptionError: "",
 }
-
 
 class Add extends Component {
   constructor(props) {
     super(props);
     this.formRef = React.createRef();
     this.state = { item_id: 0 };
-    this.state = initialState;
-  }
+
+      // init state - may be overwritten
+      this.state = initialState;
+    }
+  
+    onChangeTitle = (e) => {
+      this.setState({ title: e.target.value });
+      const isCheckbox = e.target.type === "checkbox";
+      this.setState({
+        [e.target.name]: isCheckbox
+          ? e.target.checked
+          : e.target.value
+      });
+    };
+    
+    onChangePrice = (e) => {
+      this.setState({ price: e.target.value });
+      const isCheckbox = e.target.type === "checkbox";
+      this.setState({
+        [e.target.name]: isCheckbox
+          ? e.target.checked
+          : e.target.value
+      });
+    };
+    
+    onChangeSize = (e) => {
+      this.setState({ size: e.target.value });
+      const isCheckbox = e.target.type === "checkbox";
+      this.setState({
+        [e.target.name]: isCheckbox
+          ? e.target.checked
+          : e.target.value
+      });
+    };
+    
+    
+    onChangeCondition = (e) => {
+      this.setState({ condition: e.target.value });
+      const isCheckbox = e.target.type === "checkbox";
+      this.setState({
+        [e.target.name]: isCheckbox
+          ? e.target.checked
+          : e.target.value
+      });
+    };
+    
+    onChangeDescription = (e) => {
+      this.setState({ description: e.target.value });
+      const isCheckbox = e.target.type === "checkbox";
+      this.setState({
+        [e.target.name]: isCheckbox
+          ? e.target.checked
+          : e.target.value
+      });
+    };
+    
+    
+    // Form info validation
+    
+    validate = () => {
+      
+     let titleError = "";
+      let priceError = "";
+      let sizeError = "";
+     let conditionError = "";
+     let descriptionError = "";
+    
+      if (!this.state.title) {
+        titleError = "Invalid title";
+      }
+    
+      if (!this.state.price) {
+        priceError = "invalid price";
+      }
+    
+      if (!this.state.size) {
+        sizeError = "invalid size";
+      }
+    
+      if (!this.state.condition) {
+        conditionError = "invalid condition";
+      }
+    
+      if (!this.state.description) {
+        descriptionError = "Invalid description";
+      }
+    
+      if (titleError || priceError || sizeError || conditionError || descriptionError) {
+        this.setState({ titleError, priceError, sizeError, conditionError, descriptionError });
+        return false;
+    
+      } return true;
+    
+    }
+
 
 
   addProduct = (e) => {
     e.preventDefault();
+    const isValid = this.validate();
+    if (isValid) {
+      console.log(this.state);
+      this.setState(initialState)
     var formData = new FormData(this.formRef.current);
 
     //lets see what we have in the form
@@ -42,117 +138,6 @@ class Add extends Component {
       headers: { "Content-Type": "multipart/form-data" },
     };
 
-    
-  }
-
-onChangeTitle = (e) => {
-  this.setState({ Title: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-onChangePrice = (e) => {
-  this.setState({ Price: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-onChangeSize = (e) => {
-  this.setState({ Size: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-
-onChangeCondition = (e) => {
-  this.setState({ Condition: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-onChangeDescription = (e) => {
-  this.setState({ Description: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-// Form info validation
-
-validate = () => {
-    
-  let TitleError = "";
-  let PriceError = "";
-  let SizeError = "";
-  let ConditionError = "";
-  let DescriptionError = "";
-
-  if (!this.state.Title) {
-    TitleError = "Invalid title";
-  }
-
-  if (!this.state.Price) {
-    PriceError = "invalid price";
-  }
-
-  if (!this.state.Size) {
-    SizeError = "invalid size";
-  }
-
-  if (!this.state.Condition) {
-    ConditionError = "invalid condition";
-  }
-
-  if (!this.state.Description) {
-    DescriptionError = "Invalid description";
-  }
-
-  if (TitleError || PriceError || SizeError || ConditionError || DescriptionError) {
-    this.setState({ TitleError, PriceError, SizeError, ConditionError, DescriptionError });
-    return false;
-
-  } return true;
-
-}
-
-addProduct = (e) => {
-  e.preventDefault();
-  const isValid = this.validate();
-  if (isValid) {
-  console.log(this.state);
-  this.setState(initialState)
-
-  {var formData = new FormData(this.formRef.current);
-
-  //lets see what we have in the form
-  for (var p of formData.entries()) {
-    console.log(p);
-  }
-
-  var settings = {
-    headers: { "Content-Type": "multipart/form-data" },
-  };
-
-  
     Axios.post(UTILS.show_items, formData, settings)
       .then((res) => {
         console.log(res);
@@ -161,36 +146,14 @@ addProduct = (e) => {
       .catch((err) => {
         console.log(err);
       });
-      
-  };
+  }
+};
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
     if (s.startsWith("http")) {
       return true;
     }
-  }
-}
-};
-
-
- 
-uploadToExpress = (e) => {
-  e.preventDefault();
-  // grab reference to the form data
-  var formData = new FormData(this.formRef.current);
-  var settings = { headers: { "Content-Type": "multipart/form-data" } };
-  console.log(">>>+ FORMDATA ", formData);
-  Axios.post(UTILS.show_items, formData, settings).then((res) => {
-    console.log(res);
-  });
-};
-
-checkForURL = (s = "") => {
-  console.log("s = ", s);
-  if (s.startsWith("http")) {
-    return true;
-  }
 
   if (s.startsWith("httsp")) {
     return true;
@@ -202,6 +165,9 @@ checkForURL = (s = "") => {
 
   return false;
 };
+
+
+
 
   render() {
     return (
@@ -215,33 +181,46 @@ checkForURL = (s = "") => {
               placeholder="Title"
               name="title"
               className="text-input"
+              onChange={this.onChangeTitle}
+              value={this.state.title}
             ></input>
-            <div style={{ fontSize: 12, color: "red" }}>{this.state.TitleError}</div>
+             <div style={{ fontSize: 12, color: "red" }}>{this.state.titleError}</div>
             <input
               type="text"
               placeholder="Price"
               name="price"
               className="text-input"
+              onChange={this.onChangePrice}
+              value={this.state.price}
             ></input>
+             <div style={{ fontSize: 12, color: "red" }}>{this.state.priceError}</div>
             <input
               type="text"
               placeholder="Size"
               name="size"
               className="text-input"
+              onChange={this.onChangeSize}
+              value={this.state.size}
             ></input>
+              <div style={{ fontSize: 12, color: "red" }}>{this.state.sizeError}</div>
             <input
               type="text"
               placeholder="Condition"
               name="condition"
               className="text-input"
+              onChange={this.onChangeCondition}
+              value={this.state.condition}
             ></input>
-
+ <div style={{ fontSize: 12, color: "red" }}>{this.state.conditionError}</div>
             <input
               type="textarea"
               placeholder="Description"
               name="description"
               className="textarea-input"
+              onChange={this.onChangeDescription}
+              value={this.state.description}
             ></input>
+ <div style={{ fontSize: 12, color: "red" }}>{this.state.descriptionError}</div>
 
             <AddDropdown />
             <input id="id" type="hidden" name="id" value={this.state.id} />
