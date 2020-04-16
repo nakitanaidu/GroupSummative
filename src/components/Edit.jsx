@@ -4,8 +4,7 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import { Util } from "reactstrap";
-import CategorySelector from "./CategorySelector";
+import EditDropdown from "./dropdowns/EditDropdown";
 
 class Edit extends Component {
 constructor(props) {
@@ -14,8 +13,6 @@ this.state = { items: {}, isLoaded: false};
 // get handle on the DOM element
 this.myRef = React.createRef();
 }
-
-
 
 
 onChangeTitle = (e) => {
@@ -112,9 +109,9 @@ validate = () => {
 
 
 
-onCategoryUpdated(event) {
-this.setState({items: event.target.value});
-}
+// onCategoryUpdated(event) {
+// this.setState({items: event.target.value});
+// }
 
 gotoProducts = (e) => {
   
@@ -258,8 +255,9 @@ return (
         ></input>
         <div style={{ fontSize: 12, color: "red" }}>{this.state.descriptionError}</div>
 
-        <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/>
-        <select className="category-options" value={this.state.category} onChange={this.handleChange}>
+        <EditDropdown/>
+        {/* <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/> */}
+        {/* <select className="category-options" value={this.state.category} onChange={this.handleChange}>
           <option
             defaultValue={womens_category}
             name="womens_category"
@@ -277,7 +275,7 @@ return (
           >
             Men's clothing
           </option>
-        </select>
+        </select> */}
 
         <div className="uploadimg-con">
           <figure>

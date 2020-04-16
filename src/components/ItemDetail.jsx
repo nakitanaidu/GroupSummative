@@ -10,24 +10,7 @@ class ItemDetail extends Component {
     this.state = {
       items: [],
     };
-    // this.formRef = React.createRef();
-    // console.table(this.props);
   }
-
-  // submitComment = (e) => {
-  //   var formData = new FormData(this.formRef.current);
-
-  //   Axios.post(UTILS.post_comment, formData).then(
-  //     (res) => {
-  //       console.log("force reload");
-  //       this.props.commentAdded();
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // };
-
 
   componentDidMount() {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
@@ -58,7 +41,11 @@ class ItemDetail extends Component {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  <img className="item-detail-img" src={`${UTILS.images_folder}` + item.image} alt="item-img" />
+                  <img
+                    src={item.image}
+                    alt="item-img"
+                    className="item-detail-img"
+                  />
                 </div>
 
                 <h2 className="dark">{item.title}</h2>

@@ -4,7 +4,6 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import CategorySelector from "./CategorySelector";
 import logo from "./images/logo.png"
 
 
