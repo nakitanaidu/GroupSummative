@@ -40,7 +40,8 @@ export default class extends Component {
                 <DisplayItems
                   key={i}
                   // womens_category={items.womens_category}
-                  mens_category={items.mens_category}
+                  // mens_category={items.mens_category}
+                  category={items.category}
                   image={items.image}
                   title={items.title}
                   price={items.price}

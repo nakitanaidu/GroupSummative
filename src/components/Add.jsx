@@ -10,39 +10,32 @@ class Add extends Component {
   constructor(props) {
     super(props);
     this.formRef = React.createRef();
-    this.state = { id: Date.now() };
+    this.state = { item_id: 0 };
   }
+
 
   addProduct = (e) => {
     e.preventDefault();
     var formData = new FormData(this.formRef.current);
-    // FYI: form still works even if there is no image included
-    // forms with images look a bit different - we need to add this line.
+
+    //lets see what we have in the form
+    for (var p of formData.entries()) {
+      console.log(p);
+    }
+
     var settings = {
       headers: { "Content-Type": "multipart/form-data" },
     };
 
-    console.log(">>> FORMDATA ", formData);
     Axios.post(UTILS.show_items, formData, settings)
       .then((res) => {
         console.log(res);
-        navigate(`/user-product-details/${res.data.id}`);
+        navigate(`/user-product-details/${res.data._id}`);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  // uploadToExpress = (e) => {
-  //   e.preventDefault();
-  //   // grab reference to the form data
-  //   var formData = new FormData(this.formRef.current);
-  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
-  //   console.log(">>>+ FORMDATA ", formData);
-  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
@@ -126,24 +119,3 @@ class Add extends Component {
 }
 
 export default Add;
-
-// onMenClicked = (e) => {
-//   var formData = new FormData(this.formRef.current);
-//   var mens_category = { mens_category: "men" };
-//   Axios.post(UTILS.show_items, formData, mens_category).then((res) => {
-//     console.log(res.data);
-//   });
-// };
-
-// onChangeCategory = (e) => {
-//   e.preventDefault();
-//   var formData = new FormData(this.formRef.current);
-//   var women = e.target.elements["women"].value;
-//   var men = e.target.elements["men"].value;
-//   Axios.post(UTILS.show_items, formData, {
-//     womens_category: women,
-//     mens_category: men,
-//   }).then((res) => {
-//     console.log(res);
-//   });
-// };
