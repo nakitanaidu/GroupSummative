@@ -71,8 +71,6 @@ class Edit extends Component {
 
   render() {
     let {
-      womens_category,
-      mens_category,
       image,
       title,
       price,
