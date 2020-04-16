@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import * as UTILS from "../utils";
 import { navigate } from "@reach/router";
 import Axios from "axios";
@@ -6,7 +6,8 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import EditDropdown from "./dropdowns/EditDropdown";
 
-class Edit extends Component {
+export default class Edit extends Component {
+ 
 constructor(props) {
 super(props);
 this.state = { items: {}, isLoaded: false};
@@ -135,32 +136,34 @@ return false;
 };
 
 componentDidMount() {
-Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-// console.table(res.data);
-this.setState({ items: res.data[0], isLoaded: true });
-});
+  Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
+    // console.table(res.data);
+    this.setState({ items: res.data[0], isLoaded: true });
+  });
 }
 
 EditProduct = (e) => {
-console.log("EDIT");
-e.preventDefault();
-// grab reference to the form data
-var formData = new FormData(this.myRef.current);
-//lets see what we have in the form
-for (var p of formData.entries()) {
-console.log(p);
-}
-var settings = {
-headers: { "Content-Type": "multipart/form-data" },
-};
-Axios.put(`${UTILS.update_item}/${this.props.id}`, formData, settings).then(
-(res) => {
-console.log(res);
-},
-(error) => {
-console.log(this.props.id);
-}
-);
+  console.log("EDIT");
+  e.preventDefault();
+  // grab reference to the form data
+  var formData = new FormData(this.myRef.current);
+  //lets see what we have in the form
+  for (var p of formData.entries()) {
+    console.log(p);
+  }
+
+  var settings = {
+    headers: { "Content-Type": "multipart/form-data" },
+  };
+
+  Axios.put(`${UTILS.update_item}/${this.props.id}`, formData, settings).then(
+    (res) => {
+      console.log(res);
+    },
+    (error) => {
+      console.log(`Error updating ${this.props.id}`);
+    }
+  );
 };
 
 render() {
@@ -359,4 +362,4 @@ return (
 }
 }
 
-export default Edit;
+
