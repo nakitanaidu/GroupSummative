@@ -88,7 +88,7 @@ class EditProfile extends Component {
     }
 
     if (!this.state.Phone > 9) {
-      PhoneError = "Invalid phone number should by 9 digits";
+      PhoneError = "Invalid phone number should be 9 digits";
     }
 
     if (!this.state.Phone) {
