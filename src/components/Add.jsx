@@ -13,6 +13,12 @@ class Add extends Component {
     this.state = { item_id: 0 };
   }
 
+  gotoProducts = (e) => {
+    let temp = this.props.id;
+    console.log(this.props.id);
+
+    navigate(`/user-items`);
+  };
 
   addProduct = (e) => {
     e.preventDefault();
@@ -36,6 +42,17 @@ class Add extends Component {
         console.log(err);
       });
   };
+
+  // uploadToExpress = (e) => {
+  //   e.preventDefault();
+  //   // grab reference to the form data
+  //   var formData = new FormData(this.formRef.current);
+  //   var settings = { headers: { "Content-Type": "multipart/form-data" } };
+  //   console.log(">>>+ FORMDATA ", formData);
+  //   Axios.post(UTILS.show_items, formData, settings).then((res) => {
+  //     console.log(res);
+  //   });
+  // };
 
   checkForURL = (s = "") => {
     console.log("s = ", s);
@@ -108,7 +125,12 @@ class Add extends Component {
               </span>
             </div>
 
-            <button className="btn btn-primary btn-wide">Add Item</button>
+            <button
+              className="btn btn-primary btn-wide"
+              onClick={this.gotoItemDetail}
+            >
+              Add Item
+            </button>
           </form>
         </div>
 

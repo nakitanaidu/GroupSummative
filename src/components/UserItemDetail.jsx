@@ -48,14 +48,10 @@ class UserItemDetail extends Component {
       <React.Fragment>
         <TopNav />
         <div className="item-detail page">
-          {/* props not dispalying */}
           {this.state.items.map((item, i) => {
             return (
               <React.Fragment key={i}>
                 <div className="detail-img-con">
-                  {/* 
-                  Trying to retrieve this data
-                  http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg */}
                   <img
                     className="item-detail-img"
                     src={`${UTILS.images_folder}` + item.image}
