@@ -264,6 +264,56 @@ return (
             name="mens_category"
             className="option-style"
             onChange={this.onMenClicked}
+  EditProduct = (e) => {
+    console.log("EDIT");
+    e.preventDefault();
+    // grab reference to the form data
+    var formData = new FormData(this.myRef.current);
+    //lets see what we have in the form
+    for (var p of formData.entries()) {
+      console.log(p);
+    }
+
+    var settings = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+
+    Axios.put(`${UTILS.update_item}/${this.props.id}`, formData, settings).then(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        console.log(`Error updating ${this.props.id}`);
+      }
+    );
+  };
+
+  render() {
+    let {
+      image,
+      title,
+      price,
+      size,
+      condition,
+      description,
+    } = this.state.items;
+
+    // only append server url to images that are not external
+    if (typeof image === "string" && this.checkForURL(image) === false) {
+      image = UTILS.images_folder + image;
+    }
+
+    console.log("hello ", this.state.isLoaded);
+
+    return (
+      <React.Fragment>
+        <TopNav />
+        <div className="page">
+          <h2 className="page-tile">Edit Item</h2>
+          <form
+            className="form-wrapper"
+            onSubmit={this.EditProduct}
+            ref={this.myRef}
           >
             Men's clothing
           </option>
