@@ -40,8 +40,6 @@ export default class ViewAll extends Component {
                 <UserItem
                   key={i}
                   category={items.category}
-                  womens_category={items.womens_category}
-                  mens_category={items.mens_category}
                   image={`${UTILS.images_folder}` + items.image}
                   title={items.title}
                   price={items.price}
