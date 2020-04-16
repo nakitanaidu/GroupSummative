@@ -4,8 +4,7 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import CategorySelector from "./CategorySelector";
-import CategoryDropdown from "./CategoryDropdown";
+import AddDropdown from "./dropdowns/AddDropdown";
 
 class Add extends Component {
   constructor(props) {
@@ -94,7 +93,7 @@ class Add extends Component {
               className="textarea-input"
             ></input>
 
-            <CategoryDropdown />
+            <AddDropdown />
             <input id="id" type="hidden" name="id" value={this.state.id} />
 
             <div className="uploadimg-con">
