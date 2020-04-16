@@ -6,148 +6,33 @@ import TopNav from "./TopNav";
 import NavBar from "./NavBar";
 import AddDropdown from "./dropdowns/AddDropdown";
 
-const initialState = {
-  Title: "",
-  Price: "",
-  Size: "",
-  Condition: "",
-  Description: "",
-  TitleError: "",
-  PriceError: "",
-  SizeError: "",
-  ConditionError: "",
-  DescriptionError: "",
-}
-
-
 class Add extends Component {
-  constructor(props) {
-    super(props);
-    this.formRef = React.createRef();
-    this.state = { item_id: 0 };
-    // this.state = initialState;
-  }
-
-onChangeTitle = (e) => {
-  this.setState({ Title: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-  
-onChangePrice = (e) => {
-  this.setState({ Price: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-  
-onChangeSize = (e) => {
-  this.setState({ Size: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-  
-  
-onChangeCondition = (e) => {
-  this.setState({ Condition: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-  
-onChangeDescription = (e) => {
-  this.setState({ Description: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-  
-  // Form info validation
-  
-validate = () => {
-    
-  let TitleError = "";
-  let PriceError = "";
-  let SizeError = "";
-  let ConditionError = "";
-  let DescriptionError = "";
-
-  if (!this.state.Title) {
-    TitleError = "Invalid title";
-  }
-
-  if (!this.state.Price) {
-    PriceError = "invalid price";
-  }
-
-  if (!this.state.Size) {
-    SizeError = "invalid size";
-  }
-
-  if (!this.state.Condition) {
-    ConditionError = "invalid condition";
-  }
-
-  if (!this.state.Description) {
-    DescriptionError = "Invalid description";
-  }
-
-  if (TitleError || PriceError || SizeError || ConditionError || DescriptionError) {
-    this.setState({ TitleError, PriceError, SizeError, ConditionError, DescriptionError });
-    return false;
-
-  } return true;
-
+constructor(props) {
+  super(props);
+  this.formRef = React.createRef();
+  this.state = { id: Date.now() };
 }
-  
+
 addProduct = (e) => {
   e.preventDefault();
-  const isValid = this.validate();
-  if (isValid) {
-  console.log(this.state);
-  this.setState(initialState)
-
-  {var formData = new FormData(this.formRef.current);
-
-  //lets see what we have in the form
-  for (var p of formData.entries()) {
-    console.log(p);
-  }
-
+  var formData = new FormData(this.formRef.current);
+  // FYI: form still works even if there is no image included
+  // forms with images look a bit different - we need to add this line.
   var settings = {
     headers: { "Content-Type": "multipart/form-data" },
   };
 
-  
-    Axios.post(UTILS.show_items, formData, settings)
-      .then((res) => {
-        console.log(res);
-        navigate(`/user-product-details/${res.data._id}`);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-}
+  console.log(">>> FORMDATA ", formData);
+  Axios.post(UTILS.show_items, formData, settings)
+    .then((res) => {
+      console.log(res);
+      navigate(`/user-product-details/${res.data.id}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
-  
+
 checkForURL = (s = "") => {
   console.log("s = ", s);
   if (s.startsWith("http")) {
@@ -164,7 +49,6 @@ checkForURL = (s = "") => {
 
   return false;
 };
-
 
   render() {
     return (
@@ -231,6 +115,3 @@ checkForURL = (s = "") => {
 }
 
 export default Add;
-
-
-
