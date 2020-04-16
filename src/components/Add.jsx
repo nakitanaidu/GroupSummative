@@ -7,48 +7,52 @@ import NavBar from "./NavBar";
 import AddDropdown from "./dropdowns/AddDropdown";
 
 class Add extends Component {
-constructor(props) {
-  super(props);
-  this.formRef = React.createRef();
-  this.state = { id: Date.now() };
-}
+  constructor(props) {
+    super(props);
+    this.formRef = React.createRef();
+    this.state = { item_id: 0 };
+  }
 
-addProduct = (e) => {
-  e.preventDefault();
-  var formData = new FormData(this.formRef.current);
-  // FYI: form still works even if there is no image included
-  // forms with images look a bit different - we need to add this line.
-  var settings = {
-    headers: { "Content-Type": "multipart/form-data" },
+
+  addProduct = (e) => {
+    e.preventDefault();
+    var formData = new FormData(this.formRef.current);
+
+    //lets see what we have in the form
+    for (var p of formData.entries()) {
+      console.log(p);
+    }
+
+    var settings = {
+      headers: { "Content-Type": "multipart/form-data" },
+    };
+
+    Axios.post(UTILS.show_items, formData, settings)
+      .then((res) => {
+        console.log(res);
+        navigate(`/user-product-details/${res.data._id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  console.log(">>> FORMDATA ", formData);
-  Axios.post(UTILS.show_items, formData, settings)
-    .then((res) => {
-      console.log(res);
-      navigate(`/user-product-details/${res.data.id}`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+  checkForURL = (s = "") => {
+    console.log("s = ", s);
+    if (s.startsWith("http")) {
+      return true;
+    }
 
-checkForURL = (s = "") => {
-  console.log("s = ", s);
-  if (s.startsWith("http")) {
-    return true;
-  }
+    if (s.startsWith("httsp")) {
+      return true;
+    }
 
-  if (s.startsWith("httsp")) {
-    return true;
-  }
+    if (s.startsWith("//")) {
+      return true;
+    }
 
-  if (s.startsWith("//")) {
-    return true;
-  }
-
-  return false;
-};
+    return false;
+  };
 
   render() {
     return (
