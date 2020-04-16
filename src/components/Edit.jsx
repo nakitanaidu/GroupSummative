@@ -105,14 +105,6 @@ validate = () => {
 
 }
 
-
-
-
-
-// onCategoryUpdated(event) {
-// this.setState({items: event.target.value});
-// }
-
 gotoProducts = (e) => {
   
   const isValid = this.validate();

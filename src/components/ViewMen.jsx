@@ -14,15 +14,12 @@ export default class extends Component {
     };
   }
 
-  componentDidMount(){
-    this.getData()
-  }
 
   // commentAdded = (e) => {
   //   this.getData();
   // };
 
-  getData() {
+  componentDidMount() {
     Axios.get(UTILS.show_men).then(
       (res) => {
         console.table(res.data);
