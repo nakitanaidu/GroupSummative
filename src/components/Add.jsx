@@ -120,6 +120,14 @@ class Add extends Component {
     }
 
 
+  
+
+  gotoProducts = (e) => {
+    let temp = this.props.id;
+    console.log(this.props.id);
+
+    navigate(`/user-items`);
+  };
 
   addProduct = (e) => {
     e.preventDefault();
@@ -237,7 +245,12 @@ class Add extends Component {
               </span>
             </div>
 
-            <button className="btn btn-primary btn-wide">Add Item</button>
+            <button
+              className="btn btn-primary btn-wide"
+              onClick={this.gotoItemDetail}
+            >
+              Add Item
+            </button>
           </form>
         </div>
 
