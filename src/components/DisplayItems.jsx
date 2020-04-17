@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import * as UTILS from "../utils";
-import Axios from "axios";
-import TopNav from "./TopNav";
-import NavBar from "./NavBar";
+
 
 class DisplayItems extends Component {
   productDisplay = (e) => {

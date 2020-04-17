@@ -4,8 +4,8 @@ import { navigate } from "@reach/router";
 import Axios from "axios";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-import CategorySelector from "./CategorySelector";
-import logo from "./images/logo.png";
+import logo from "./images/logo.png"
+
 
 const initialState = {
   User: "",
@@ -28,17 +28,9 @@ class EditProfile extends Component {
     this.state = initialState;
   }
 
- 
-   
   onChangeUser = (e) => {
     this.setState({ User: e.target.value });
     localStorage.setItem("user", e.target.value);
-    const isCheckbox = e.target.type === "checkbox";
-    this.setState({
-      [e.target.name]: isCheckbox
-        ? e.target.checked
-        : e.target.value
-    });
   };
 
   onChangeEmail = (e) => {
@@ -75,13 +67,6 @@ class EditProfile extends Component {
     });
   };
 
-  onChangeImg = (e) => {
-    this.setState({ Password: e.target.value });
-    localStorage.setItem("img", e.target.value);
-  };
-
-
-
   // Form info validation
 
   validate = () => {
@@ -103,7 +88,7 @@ class EditProfile extends Component {
     }
 
     if (!this.state.Phone > 9) {
-      PhoneError = "Invalid phone number should by 9 digits";
+      PhoneError = "Invalid phone number should be 9 digits";
     }
 
     if (!this.state.Phone) {
@@ -129,7 +114,7 @@ class EditProfile extends Component {
       console.log(this.state);
       this.setState(initialState)
       navigate("/profile")
-      
+
     }
   };
 
@@ -151,22 +136,14 @@ class EditProfile extends Component {
         Phone: localStorage.getItem("phone"),
       });
     }
-
-    if (localStorage.getItem("img")) {
-      this.setState({
-        Phone: localStorage.getItem("img"),
-      });
-      
-    }
   }
-  
+
   render() {
     return (
       <React.Fragment>
         <TopNav />
-
-        <img src={logo} alt="logo" className="logo" />
         <div className="page">
+        <img src={logo} alt="logo" className="logo"/>
           <h2 className="page-tile">Edit Profile</h2>
           <form onSubmit={this.onSubmit}>
             <input
@@ -186,7 +163,7 @@ class EditProfile extends Component {
             ></input>
             <div style={{ fontSize: 12, color: "red" }}>{this.state.EmailError}</div>
             <input
-              type="text"
+              type="number"
               placeholder="Phone"
               className="text-input"
               value={this.state.Phone}
@@ -197,32 +174,18 @@ class EditProfile extends Component {
               type="password"
               placeholder="Password"
               className="text-input"
+              value={this.state.Password}
               onChange={this.onChangePassword}
             ></input>
-             <div style={{ fontSize: 12, color: "red" }}>{this.state.PasswordError}</div>
-          
-
-
-           
-             <div className="uploadimg-con">
-              <input
-                type="file"
-                name="image"
-                placeholder="image"
-                onChange={this.onChangeImg}
-                className="upload-img"
-              ></input>
-              <span>
-                <p className="dark upload-frame grey">Upload Image</p>
-              </span>
-            </div>
-
-            <button type="submit" className="btn btn-primary btn-lesswide">
+            <div style={{ fontSize: 12, color: "red" }}>{this.state.PasswordError}</div>
+            
+            <button
+              type="submit"
+              className="btn btn-primary btn-lesswide"
+            >
               Update
             </button>
           </form>
-
-
         </div>
 
         <NavBar />

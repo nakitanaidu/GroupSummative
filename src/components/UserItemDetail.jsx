@@ -60,7 +60,11 @@ class UserItemDetail extends Component {
                   {/* 
                   Trying to retrieve this data
                   http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg */}
-                  <img src={`${UTILS.images_folder}`+ item.image} alt="item-img" />
+                  <img
+                    className="item-detail-img"
+                    src={`${UTILS.images_folder}` + item.image}
+                    alt="item-img"
+                  />
                 </div>
 
                 <h2 className="dark">{item.title}</h2>

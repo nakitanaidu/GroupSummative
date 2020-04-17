@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
+import logo from "./images/background/compressed/kisspng-computer-icons-business-service-user-google-accoun-person-with-helmut-5ac35490eb2c23.1951162915227506089633.png"
 
 
 class UsersProfile extends Component {
@@ -12,14 +13,13 @@ class UsersProfile extends Component {
     let u = window.localStorage.getItem("user") || "User name";
     let e = window.localStorage.getItem("email") || "Email";
     let p = window.localStorage.getItem("phone") || "Phone";
-    let f = window.localStorage.getItem("img") || "img";
+   
 
     this.state = {
       data: "",
       user: u,
       email: e,
       phone: p,
-      img : f,
     };
   }
 
@@ -45,7 +45,7 @@ class UsersProfile extends Component {
 
           <div className="user-information">
             <div className="avatar">
-              <img src={this.state.img} alt="user" />
+              <img src={logo} alt="user" />
             </div>
 
             <div className="user-detail">
