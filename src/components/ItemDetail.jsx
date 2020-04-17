@@ -42,7 +42,7 @@ class ItemDetail extends Component {
               <React.Fragment key={i}>
                 <div className="detail-img-con">
                   <img
-                    src={item.image}
+                  src={`${UTILS.images_folder}` + item.image}
                     alt="item-img"
                     className="item-detail-img"
                   />
