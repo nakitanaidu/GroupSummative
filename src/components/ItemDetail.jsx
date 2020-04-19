@@ -7,9 +7,11 @@ import NavBar from "./NavBar";
 class ItemDetail extends Component {
   constructor(props) {
     super(props);
+    let u = window.localStorage.getItem("user") || "User name";
     this.state = {
       items: [],
       comments: [],
+      user: u,
     };
     this.commentsField = React.createRef();
   }
@@ -90,7 +92,7 @@ class ItemDetail extends Component {
           })}
 
           <div className="seller-seemore">
-            <p className="grey">Seller: </p>
+            <p className="grey">{this.state.user}: </p>
             <p>
               <a href="REPLACE THIS LINK" className="grey">
                 See more here
@@ -118,7 +120,7 @@ class ItemDetail extends Component {
             </button>
 
             <div className="comment">
-              <p className="grey">User's name goes here</p>
+              <p className="grey">{this.state.user}</p>
               {this.state.comments.map((item, i) => {
                 return (
                   <p key={i} className="dark">

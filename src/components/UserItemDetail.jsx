@@ -8,9 +8,11 @@ import NavBar from "./NavBar";
 class UserItemDetail extends Component {
   constructor(props) {
     super(props);
+    let u = window.localStorage.getItem("user") || "User name";
     this.state = {
       items: [],
       comments: [],
+      user: u,
     };
     this.commentsField = React.createRef();
   }
@@ -70,19 +72,6 @@ class UserItemDetail extends Component {
       navigate(`/edit-details/${temp}`);
     };
 
-    // componentDidMount() {
-    //   if (this.props.id === "undefined") {
-    //     alert("no id supplied");
-    //   } else {
-    //     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-    //       console.table(res.data);
-    //       this.setState({
-    //         items: res.data,
-    //       });
-    //     });
-    //   }
-    // }
-
     removeProduct = (evt) => {
       var index = evt.target.getAttribute("data-uuid");
       console.table(this.state.items);
@@ -123,7 +112,7 @@ class UserItemDetail extends Component {
 
                   <p className="dark">{item.description}</p>
                   <div className="seller-seemore">
-                    <p className="grey">Seller: </p>
+                    <p className="grey">{this.state.user}: </p>
                     <p>
                       <a href="REPLACE THIS LINK" className="grey">
                         See more here
@@ -150,22 +139,6 @@ class UserItemDetail extends Component {
               );
             })}
 
-            {/* <div className="comment-con">
-              <h3 className="dark">Leave a comment</h3>
-              <input type="textarea" className="grey textarea-input"></input>
-
-              <button className="btn btn-primary btn-narrow btn-right">
-                Send
-            </button>
-
-              <div className="comment">
-                <p className="grey">User's name goes here</p>
-                <p className="dark">Comment goes here</p>
-              </div>
-            </div>
-          </div>
-          <NavBar />
-        </React.Fragment> */}
           {/* comment section */}
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
@@ -184,7 +157,7 @@ class UserItemDetail extends Component {
             </button>
 
             <div className="comment">
-              <p className="grey">User's name goes here</p>
+              <p className="grey">{this.state.user}</p>
               {this.state.comments.map((item, i) => {
                 return (
                   <p key={i} className="dark">
