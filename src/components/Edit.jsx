@@ -16,106 +16,15 @@ this.myRef = React.createRef();
 }
 
 
-onChangeTitle = (e) => {
-  this.setState({ title: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-onChangePrice = (e) => {
-  this.setState({ price: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-onChangeSize = (e) => {
-  this.setState({ size: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-
-onChangeCondition = (e) => {
-  this.setState({ condition: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-onChangeDescription = (e) => {
-  this.setState({ description: e.target.value });
-  const isCheckbox = e.target.type === "checkbox";
-  this.setState({
-    [e.target.name]: isCheckbox
-      ? e.target.checked
-      : e.target.value
-  });
-};
-
-
-// Form info validation
-
-validate = () => {
-  
- let titleError = "";
-  let priceError = "";
-  let sizeError = "";
- let conditionError = "";
- let descriptionError = "";
-
-  if (!this.state.title) {
-    titleError = "Invalid title";
-  }
-
-  if (!this.state.price) {
-    priceError = "invalid price";
-  }
-
-  if (!this.state.size) {
-    sizeError = "invalid size";
-  }
-
-  if (!this.state.condition) {
-    conditionError = "invalid condition";
-  }
-
-  if (!this.state.description) {
-    descriptionError = "Invalid description";
-  }
-
-  if (titleError || priceError || sizeError || conditionError || descriptionError) {
-    this.setState({ titleError, priceError, sizeError, conditionError, descriptionError });
-    return false;
-
-  } return true;
-
-}
 
 gotoProducts = (e) => {
   
-  const isValid = this.validate();
-  if (isValid) {
   console.log(this.state);
 let temp = this.props.id;
 console.log(this.props.id);
 
 navigate(`/user-product-details/${temp}`);
-  }
+  
 };
 
 checkForURL = (s = "") => {
@@ -168,19 +77,12 @@ EditProduct = (e) => {
 
 render() {
 let {
-womens_category,
-mens_category,
 image,
 title,
 price,
 size,
 condition,
 description,
-titleError ,
-priceError,
-sizeError,
-conditionError,
-descriptionError,
 } = this.state.items;
 
 // only append server url to images that are not external
@@ -204,40 +106,36 @@ return (
           className="text-input"
           name="title"
           onChange={this.onChangeTitle}
-          value={this.state.title}
           defaultValue={title}
         ></input>
- <div style={{ fontSize: 12, color: "red" }}>{this.state.titleError}</div>
+
         <input
           type="text"
           placeholder="Price"
           className="text-input"
           name="price"
           onChange={this.onChangePrice}
-          value={this.state.price}
           defaultValue={price}
         ></input>
-         <div style={{ fontSize: 12, color: "red" }}>{this.state.priceError}</div>
+
         <input
           type="text"
           placeholder="Size"
           className="text-input"
           name="size"
           onChange={this.onChangeSize}
-          value={this.state.size}
           defaultValue={size}
         ></input>
-         <div style={{ fontSize: 12, color: "red" }}>{this.state.sizeError}</div>
+   
         <input
           type="text"
           placeholder="Condition"
           className="text-input"
           name="condition"
           onChange={this.onChangeCondition}
-          value={this.state.condition}
           defaultValue={condition}
         ></input>
-        <div style={{ fontSize: 12, color: "red" }}>{this.state.conditionError}</div>
+
         {/*  V IMP - input name should match model name on server */}
         <input
           type="textarea"
@@ -245,13 +143,11 @@ return (
           className="textarea-input"
           name="description"
           onChange={this.onChangeDescription}
-          value={this.state.description}
           defaultValue={description}
         ></input>
-        <div style={{ fontSize: 12, color: "red" }}>{this.state.descriptionError}</div>
-
+  
         <EditDropdown/>
-
+        
         <div className="uploadimg-con">
           <figure>
             <img
