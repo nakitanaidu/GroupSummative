@@ -9,17 +9,45 @@ class ItemDetail extends Component {
     super(props);
     this.state = {
       items: [],
+      comments: [],
     };
+    this.commentsField = React.createRef();
   }
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-      console.table(res.data[0]["image"]);
       this.setState({
         items: res.data,
+        comments: res.data[0].comments,
       });
     });
-  }
+  };
+
+  updateComments = (e) => {
+    // get the content of the textarea
+    let comment = this.commentsField.current.value;
+    // the id we need will be stored in state by this point
+    let id = this.state.items[0].id;
+
+    // creating a new comment
+    Axios.post(`${UTILS.post_comment}`, {
+      comment: comment,
+      id: id,
+    }).then(
+      (res) => {
+        console.log(res);
+        // on success reload the item to see comments
+        this.getData();
+      },
+      (error) => {
+        console.log("error for ", this.props.id);
+      }
+    );
+  };
 
   updateImagePath = (p) => {
     if (p.startsWith("http")) {
@@ -42,7 +70,7 @@ class ItemDetail extends Component {
               <React.Fragment key={i}>
                 <div className="detail-img-con">
                   <img
-                    src={item.image}
+                    src={this.updateImagePath(item.image)}
                     alt="item-img"
                     className="item-detail-img"
                   />
@@ -75,16 +103,29 @@ class ItemDetail extends Component {
           {/* comment section */}
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            {/* <form action="" ref={this.formRef}> */}
-              <input type="textarea" className="grey textarea-input"></input>
-            {/* </form> */}
-            <button  className="btn btn-primary btn-narrow btn-right">
+
+            <input
+              type="textarea"
+              ref={this.commentsField}
+              className="grey textarea-input"
+            ></input>
+
+            <button
+              onClick={this.updateComments}
+              className="btn btn-primary btn-narrow btn-right"
+            >
               Send
             </button>
 
             <div className="comment">
               <p className="grey">User's name goes here</p>
-              <p className="dark">Comment goes here</p>
+              {this.state.comments.map((item, i) => {
+                return (
+                  <p key={i} className="dark">
+                    {item.comment}
+                  </p>
+                );
+              })}
             </div>
           </div>
         </div>
