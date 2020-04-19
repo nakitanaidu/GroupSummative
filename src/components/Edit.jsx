@@ -251,26 +251,6 @@ return (
         <div style={{ fontSize: 12, color: "red" }}>{this.state.descriptionError}</div>
 
         <EditDropdown/>
-        {/* <CategorySelector onCategoryUpdated={this.onCategoryUpdated}/> */}
-        {/* <select className="category-options" value={this.state.category} onChange={this.handleChange}>
-          <option
-            defaultValue={womens_category}
-            name="womens_category"
-            className="option-style"
-            onChange={this.onWomenClicked}
-          >
-            Women's clothing
-          </option>
-
-          <option
-            defaultValue={mens_category}
-            name="mens_category"
-            className="option-style"
-            onChange={this.onMenClicked}
-          >
-            Men's clothing
-          </option>
-        </select> */}
 
         <div className="uploadimg-con">
           <figure>
