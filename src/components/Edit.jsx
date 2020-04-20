@@ -77,8 +77,6 @@ EditProduct = (e) => {
 
 render() {
 let {
-womens_category,
-mens_category,
 image,
 title,
 price,
@@ -148,9 +146,8 @@ return (
           defaultValue={description}
         ></input>
   
-
         <EditDropdown/>
-
+        
         <div className="uploadimg-con">
           <figure>
             <img
