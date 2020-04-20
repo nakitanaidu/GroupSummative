@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-// import * as UTILS from "../utils";
-// import Axios from "axios";
-// import TopNav from "./TopNav";
-// import NavBar from "./NavBar";
 
 export default class UserItem extends Component {
   constructor(props) {

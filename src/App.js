@@ -31,10 +31,6 @@ import "./css/checkout.css";
 import Cart from "./components/Cart";
 import UserItemDetail from "./components/UserItemDetail";
 
-
-
-// import CheckOut from "./components/CheckOut";
-
 class App extends Component {
   render() {
     return (

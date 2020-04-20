@@ -4,7 +4,6 @@ import * as UTILS from "../utils";
 import DisplayItems from "./DisplayItems";
 import TopNav from "./TopNav";
 import NavBar from "./NavBar";
-// import Comments from "./Comments";
 
 export default class extends Component {
   constructor(props) {
@@ -38,7 +37,6 @@ export default class extends Component {
             {console.log(this.state.items)}
             {this.state.items.map((items, i) => {
               return (
-                // <div key={Date.now()}>
                 <DisplayItems
                   key={i}
                   category={items.category}
