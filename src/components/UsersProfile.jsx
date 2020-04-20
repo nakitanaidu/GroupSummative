@@ -35,7 +35,6 @@ class UsersProfile extends Component {
     navigate(`/add-user-item`);
   };
 
-  // state = {};
   render() {
     return (
       <React.Fragment>

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import * as UTILS from "../utils";
-import Axios from "axios";
-// import TopNav from "./TopNav";
-// import NavBar from "./NavBar";
 
 export default class UserItem extends Component {
   constructor(props) {
@@ -14,22 +10,6 @@ export default class UserItem extends Component {
     };
   }
 
-  // refreshData = () => {
-  //   Axios.get(`${UTILS.update_item}`).then(
-  //   (res) => {
-  //   this.setState({ cars: res.data });
-  //   },
-  //   (error) => {
-  //   console.log("error = ", error);
-  //   }
-  //   );
-  //   };
-
-  //   //we getting info from json through server
-  //   componentDidMount() {
-  //   this.refreshData();
-  //   }
-
   usersProductDetail = (e) => {
     let temp = this.props._id;
     console.log(this.props._id);
@@ -37,10 +17,6 @@ export default class UserItem extends Component {
   };
 
   render() {
-    // how/where to display the changed image??
-    // src={UTILS.assets_url + item.image}
-    // const image_path = UTILS.assets_url + image;
-    // http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg
     console.log(this.props);
  var image = this.props.image;
  if (image !== undefined && !image.startsWith("http"))

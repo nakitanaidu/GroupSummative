@@ -8,116 +8,170 @@ import NavBar from "./NavBar";
 class UserItemDetail extends Component {
   constructor(props) {
     super(props);
+    let u = window.localStorage.getItem("user") || "User name";
     this.state = {
       items: [],
+      comments: [],
+      user: u,
     };
+    this.commentsField = React.createRef();
   }
 
-  gotoEdit = (e) => {
-    let temp = this.props.id;
-    console.log(this.props.id);
-    navigate(`/edit-details/${temp}`);
-  };
-
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     if (this.props.id === "undefined") {
       alert("no id supplied");
     } else {
       Axios.get(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-        console.table(res.data);
         this.setState({
           items: res.data,
+          comments: res.data[0].comments,
         });
       });
-    }
+    };
   }
 
-  removeProduct = (evt) => {
-    var index = evt.target.getAttribute("data-uuid");
-    console.table(this.state.items);
-    Axios.delete(`${UTILS.show_items}/${this.props.id}`).then((res) => {
-      console.log(res.data);
-      navigate(`/user-items`);
-    });
-  };
+    updateComments = (e) => {
+      // get the content of the textarea
+      let comment = this.commentsField.current.value;
+      // the id we need will be stored in state by this point
+      let id = this.state.items[0].id;
 
-  // state = {};
-  render() {
-    // how/where to display the changed image??
-    // src={UTILS.assets_url + image}
-    // const image_path = UTILS.assets_url + image;
-    // http://localhost:4001/assets/24c6a5f3b9cde308c1381cbb12294ace.jpg
+      // creating a new comment
+      Axios.post(`${UTILS.post_comment}`, {
+        comment: comment,
+        id: id,
+      }).then(
+        (res) => {
+          console.log(res);
+          // on success reload the item to see comments
+          this.getData();
+        },
+        (error) => {
+          console.log("error for ", this.props.id);
+        }
+      );
+    };
 
-    return (
-      <React.Fragment>
-        <TopNav />
-        <div className="item-detail page">
-          {this.state.items.map((item, i) => {
-            return (
-              <React.Fragment key={i}>
-                <div className="detail-img-con">
+    updateImagePath = (p) => {
+      if (p.startsWith("http")) {
+        // we have an absolute path, don't touch it
+        return p;
+      } else {
+        // we have a path that relates to our server, pre-pend it
+        return UTILS.images_folder + p;
+      }
+    };
+
+    gotoEdit = (e) => {
+      let temp = this.props.id;
+      console.log(this.props.id);
+      navigate(`/edit-details/${temp}`);
+    };
+
+    removeProduct = (evt) => {
+      var index = evt.target.getAttribute("data-uuid");
+      console.table(this.state.items);
+      Axios.delete(`${UTILS.show_items}/${this.props.id}`).then((res) => {
+        console.log(res.data);
+        navigate(`/user-items`);
+      });
+    };
+
+    
+    render() {
+     
+
+      return (
+        <React.Fragment>
+          <TopNav />
+          <div className="item-detail page">
+            {/* props not dispalying */}
+            {this.state.items.map((item, i) => {
+              return (
+                <React.Fragment key={i}>
+                  <div className="detail-img-con">
+                  
                   <img
-                    className="item-detail-img"
-                    src={`${UTILS.images_folder}` + item.image}
+                    src={this.updateImagePath(item.image)}
                     alt="item-img"
+                    className="item-detail-img"
                   />
-                </div>
+                  </div>
 
-                <h2 className="dark">{item.title}</h2>
+                  <h2 className="dark">{item.title}</h2>
 
-                <div className="price-size-con">
-                  <h3 className="green">Price: {item.price}</h3>
-                  <h3 className="green">Size: {item.size}</h3>
-                  <h3 className="green">Con: {item.condition}</h3>
-                </div>
+                  <div className="price-size-con">
+                    <h3 className="green">Price: {item.price}</h3>
+                    <h3 className="green">Size: {item.size}</h3>
+                    <h3 className="green">Con: {item.condition}</h3>
+                  </div>
 
-                <p className="dark">{item.description}</p>
-                <div className="seller-seemore">
-                  <p className="grey">Seller: </p>
-                  <p>
-                    <a href="REPLACE THIS LINK" className="grey">
-                      See more here
+                  <p className="dark">{item.description}</p>
+                  <div className="seller-seemore">
+                    <p className="grey">{this.state.user}: </p>
+                    <p>
+                      <a href="REPLACE THIS LINK" className="grey">
+                        See more here
                     </a>
-                  </p>
-                </div>
+                    </p>
+                  </div>
 
-                <div className="edit-delete">
-                  <button
-                    className="btn btn-narrow btn-secondary"
-                    _id={item._id}
-                    onClick={this.removeProduct}
-                  >
-                    Delete
+                  <div className="edit-delete">
+                    <button
+                      className="btn btn-narrow btn-secondary"
+                      _id={item._id}
+                      onClick={this.removeProduct}
+                    >
+                      Delete
                   </button>
-                  <button
-                    className="btn btn-narrow  btn-primary"
-                    onClick={this.gotoEdit}
-                  >
-                    Edit
+                    <button
+                      className="btn btn-narrow  btn-primary"
+                      onClick={this.gotoEdit}
+                    >
+                      Edit
                   </button>
-                </div>
-              </React.Fragment>
-            );
-          })}
+                  </div>
+                </React.Fragment>
+              );
+            })}
 
+          {/* comment section */}
           <div className="comment-con">
             <h3 className="dark">Leave a comment</h3>
-            <input type="textarea" className="grey textarea-input"></input>
 
-            <button className="btn btn-primary btn-narrow btn-right">
+            <input
+              type="textarea"
+              ref={this.commentsField}
+              className="grey textarea-input"
+            ></input>
+
+            <button
+              onClick={this.updateComments}
+              className="btn btn-primary btn-narrow btn-right"
+            >
               Send
             </button>
 
             <div className="comment">
-              <p className="grey">User's name goes here</p>
-              <p className="dark">Comment goes here</p>
+              <p className="grey">{this.state.user}</p>
+              {this.state.comments.map((item, i) => {
+                return (
+                  <p key={i} className="dark">
+                    {item.comment}
+                  </p>
+                );
+              })}
             </div>
           </div>
         </div>
         <NavBar />
       </React.Fragment>
-    );
+      );
+    }
   }
-}
 
-export default UserItemDetail;
+  export default UserItemDetail;
