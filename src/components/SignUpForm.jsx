@@ -26,6 +26,11 @@ class SignUpForm extends Component {
     this.state = initialState;
   }
 
+  toLogin = (e) => {
+   navigate(`/`)
+   
+  };
+
   onChangeUser = (e) => {
     this.setState({ User: e.target.value });
     localStorage.setItem("user", e.target.value);
@@ -147,11 +152,12 @@ class SignUpForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <img src={logo} alt="logo" className="logo" />
-        <img src={homephoto} alt="home-illus" className="home-photo" />
-
+      
         <div className="page">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>  
+          <img src={logo} alt="logo" className="logo" />
+        <img src={homephoto} alt="home-illus" className="home-photo" onClick={this.toLogin}/>
+
             <input
               type="text"
               placeholder="User"
